@@ -4,6 +4,8 @@ class Trips_model extends CI_Model{
 		unset($data['bookingemail']);
 		$insertdata = $data;
 		$insertdata['t_trackingcode'] = uniqid();
+		$insertdata['t_start_date'] = date("Y-m-d H:i", strtotime($data['t_start_date']));
+		$insertdata['t_end_date'] = date("Y-m-d H:i", strtotime($data['t_end_date']));
 		$this->db->insert('trips',$insertdata);
 		//echo $this->db->last_query();
 		return $this->db->insert_id();
@@ -12,7 +14,11 @@ class Trips_model extends CI_Model{
 		return $this->db->select('*')->from('customers')->order_by('c_name','asc')->get()->result_array();
 	} 
 	public function getall_vechicle() { 
-		return $this->db->select('*')->from('vehicles')->get()->result_array();
+		$this->db->select("vehicles.*,vehicle_group.gr_name");
+		$this->db->from('vehicles');
+		$this->db->join('vehicle_group', 'vehicles.v_group=vehicle_group.gr_id','LEFT');
+		$query = $this->db->get();
+		return $query->result_array();
 	} 
 	public function getall_mybookings($c_id) { 
 		return $this->db->select('*')->from('trips')->where('t_customer_id',$c_id)->order_by('t_id','asc')->get()->result_array();
@@ -68,6 +74,8 @@ class Trips_model extends CI_Model{
 		return $this->db->select('*')->from('trips')->where('t_id',$t_id)->get()->result_array();
 	}
 	public function update_trips($data) { 
+		$data['t_start_date'] = date("Y-m-d H:i", strtotime($data['t_start_date']));
+		$data['t_end_date'] = date("Y-m-d H:i", strtotime($data['t_end_date']));
 		$this->db->where('t_id',$this->input->post('t_id'));
 		$this->db->update('trips',$data);
 		return $this->input->post('t_id');

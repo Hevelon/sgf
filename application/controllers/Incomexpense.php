@@ -68,4 +68,15 @@ class Incomexpense extends CI_Controller {
 			redirect('incomexpense');
 		}
 	}
+	public function deleteincomexpense()
+	{
+		$ie_id = $this->input->post('del_id');
+		$deleteresp = $this->db->delete('incomeexpense', array('ie_id' => $ie_id)); 
+		if($deleteresp) {
+			$this->session->set_flashdata('successmessage', 'Record deleted successfully..');
+		} else {
+			$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
+		}
+		redirect('incomexpense');
+	}
 }

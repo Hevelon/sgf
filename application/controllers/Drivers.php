@@ -35,18 +35,16 @@ class Drivers extends CI_Controller {
 		$this->form_validation->set_rules('d_license_expdate','License Exp Date','required|trim');
 		$this->form_validation->set_rules('d_total_exp','Total Experiance','required|trim');
 		$this->form_validation->set_rules('d_doj','Date of Joining','required|trim');
-		$testxss = xssclean($_POST);
+		$testxss = true;
 		if($this->form_validation->run()==TRUE && $testxss){
 			$response = $this->drivers_model->add_drivers($this->input->post());
 			if($response) {
 				$this->session->set_flashdata('successmessage', 'New driver added successfully..');
 			    redirect('drivers');
 			}
-
-		} else
-		{
-			$errormsg = validation_errors();
-			if(!$testxs) {
+		} else {
+			$errormsg = preg_replace( "/\r|\n/", "", trim(str_replace('.',',',strip_tags(validation_errors()))));
+			if(!$testxss) {
 				$errormsg = 'Error! Your input are not allowed.Please try again';
 			}
 			$this->session->set_flashdata('warningmessage',$errormsg);
@@ -77,5 +75,16 @@ class Drivers extends CI_Controller {
 			$this->session->set_flashdata('warningmessage', 'Error! Your input are not allowed.Please try again');
 			redirect('drivers');
 		}
+	}
+	public function deletedriver()
+	{
+		$d_id = $this->input->post('del_id');
+		$deleteresp = $this->db->delete('drivers', array('d_id' => $d_id)); 
+		if($deleteresp) {
+			$this->session->set_flashdata('successmessage', 'Driver deleted successfully..');
+		} else {
+			$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
+		}
+		redirect('drivers');
 	}
 }

@@ -3,6 +3,7 @@
 class Incomexpense_model extends CI_Model{
 	
 	public function add_incomexpense($data) { 
+		$data['ie_date'] = date("Y-m-d", strtotime($data['ie_date']));
 		return	$this->db->insert('incomeexpense',$data);
 	} 
     public function getall_incomexpense() { 
@@ -22,6 +23,7 @@ class Incomexpense_model extends CI_Model{
 		return $this->db->select('*')->from('incomeexpense')->where('ie_id',$e_id)->get()->result_array();
 	}
 	public function updateincomexpense() { 
+		$_POST['ie_date'] = date("Y-m-d", strtotime($_POST['ie_date']));
 		$this->db->where('ie_id',$this->input->post('ie_id'));
 		return $this->db->update('incomeexpense',$this->input->post());
 	}

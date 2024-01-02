@@ -171,7 +171,7 @@
                              <select style="height: 32px; margin-top: -1px;" required id="t_vechicle"  class="XXinput searching"  name="t_vechicle">
                             <option value="">Select vehicle</option>
                            <?php  foreach ($vechiclelist as $key => $vechiclelists) { ?>
-                           <option  value="<?php echo output($vechiclelists['v_id']) ?>"><?php echo output($vechiclelists['v_name']).' - '. output($vechiclelists['v_registration_no']); ?></option>
+                           <option  value="<?php echo output($vechiclelists['v_id']) ?>"><?php echo $vechiclelists['gr_name'].' - '.output($vechiclelists['v_name']).' - '. output($vechiclelists['v_registration_no']); ?></option>
                            <?php  } ?>
                            </select>
                         </div>

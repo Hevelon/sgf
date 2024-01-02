@@ -2,13 +2,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">reminder Info
+            <h1 class="m-0 text-dark">Reminder Info
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Dashboard</a></li>
-              <li class="breadcrumb-item active">reminder Info</li>
+              <li class="breadcrumb-item active">Reminder Info</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,7 +43,7 @@
                         <tr>
                            <td> <?php echo output($count); $count++; ?></td>
                            <td> <?php echo output($reminderlists['v_name']); ?></td>
-                           <td> <?php echo output($reminderlists['r_date']); ?></td>
+                           <td> <?php echo output(date(dateformat(), strtotime($reminderlists['r_date']))); ?></td>
                            <td><?php echo output($reminderlists['r_message']); ?></td>
                             <?php if(userpermission('lr_reminder_delete')) { ?>
                            <td>

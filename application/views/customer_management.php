@@ -20,7 +20,7 @@
       <div class="card">
          <div class="card-body p-0">
             <div class="table-responsive">
-               <table id="custtbl" class="table card-table table-vcenter text-nowrap">
+               <table id="custtbl" class="table card-table table-vcenter">
                   <thead>
                      <tr>
                         <th class="w-1">S.No</th>
@@ -29,7 +29,7 @@
                         <th>Email</th>
                         <th>Address</th>
                         <th>Status</th>
-                        <?php if(userpermission('lr_cust_edit')) { ?>
+                        <?php if(userpermission('lr_cust_edit') || userpermission('lr_cust_del')) { ?>
                         <th>Action</th>
                         <?php } ?>
                      </tr>
@@ -51,10 +51,14 @@
                            <a class="icon" href="<?php echo base_url(); ?>customer/editcustomer/<?php echo output($customerlists['c_id']); ?>">
                            <i class="fa fa-edit"></i>
                            </a>
+                           <?php  } if(userpermission('lr_cust_del')) { ?> |
+                              <a data-toggle="modal" href="" onclick="confirmation('<?php echo base_url(); ?>customer/deletecustomer','<?= output($customerlists['c_id']); ?>')" data-target="#deleteconfirm" class="icon text-danger" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>
+                           </a> 
+                           <?php } ?>
                         </td>
                         <?php } ?>
                      </tr>
-                     <?php } } ?>
+                     <?php  } ?>
                   </tbody>
                </table>
             </div>

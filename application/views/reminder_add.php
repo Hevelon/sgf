@@ -26,13 +26,14 @@
 
 
     <div class="card-body">
+       <?php if(isset($reminderdetails)) { ?>
                          <input type="hidden" name="r_id" id="r_id" value="<?php echo (isset($reminderdetails)) ? $reminderdetails[0]['r_id']:'' ?>" >
-
+                       <?php } ?>
                   
                   <div class="form-group">
-                     <label class="form-label">Vechicle<span class="form-required">*</span></label>
-                     <select id="r_v_id"  class="form-control selectized"  name="r_v_id" >
-                        <option value="">Select Vechicle</option>
+                     <label class="form-label">Vehicle<span class="form-required">*</span></label>
+                     <select id="r_v_id"  class="form-control selectized" required name="r_v_id" >
+                        <option value="">Select Vehicle</option>
                         <?php  foreach ($vechiclelist as $key => $vechiclelists) { ?>
                         <option <?php if((isset($reminderdetails)) && $reminderdetails[0]['r_v_id'] == $vechiclelists['v_id']){ echo 'selected';} ?> value="<?php echo output($vechiclelists['v_id']) ?>"><?php echo output($vechiclelists['v_name']).' - '. output($vechiclelists['v_registration_no']); ?></option>
                         <?php  } ?>
@@ -41,14 +42,14 @@
                   
 
                   <div class="form-group">
-                    <label>Date</label>
-                    <input type="text" class="form-control datepickerpastdisable" required="true" value="" id="r_date" name="r_date" placeholder="Enter Username" autocomplete="off">
+                    <label>Date<span class="form-required">*</span></label>
+                    <input type="text" class="form-control datepicker" required="true" value="" id="r_date" name="r_date" placeholder="Choose reminder date" autocomplete="off">
                   </div>
 
 
                    <div class="form-group">
-                    <label>Message</label>
-                   <textarea class="form-control" id="r_message" autocomplete="off" placeholder="Message"  name="r_message"><?php echo (isset($reminderdetails)) ? $reminderdetails[0]['r_message']:'' ?></textarea>
+                    <label>Message<span class="form-required">*</span></label>
+                   <textarea class="form-control" id="r_message" autocomplete="off" required="true" placeholder="Message"  name="r_message"><?php echo (isset($reminderdetails)) ? $reminderdetails[0]['r_message']:'' ?></textarea>
                   </div>
 
                

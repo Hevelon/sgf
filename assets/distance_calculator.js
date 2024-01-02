@@ -18,6 +18,12 @@
                 document.getElementById("t_trip_tolog").value = longitude;
                 distance(document.getElementById("t_trip_fromlat").value, document.getElementById("t_trip_fromlog").value, latitude, longitude, 'K');
             });
+
+            var places = new google.maps.places.Autocomplete(document.getElementById('t_trip_stops'));
+              google.maps.event.addListener(places, 'place_changed', function () {
+            });
+
+
         });
         function distance(lat1, lon1, lat2, lon2, unit) {
         if ((lat1 == lat2) && (lon1 == lon2)) {

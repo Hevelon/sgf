@@ -1,7 +1,7 @@
 <footer class="main-footer">
-   <strong>Devloped By <a href="http://getsourcecodes.com" target="_blank">Getsourcecodes</a>.</strong>
+   <strong>Devloped By <a href="http://codeforts.com" target="_blank">Codeforts</a>.</strong>
    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0
+      <b>Version</b> 6.0
    </div>
 </footer>
 </div>
@@ -17,7 +17,12 @@
 <script src="<?= base_url(); ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
 <script src="<?php echo base_url(); ?>assets/jscolor.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/selectize.min.js"></script>
-<script src="<?= base_url(); ?>assets/plugins/datepicker/bootstrap-datepicker.min.js"></script>
+
+<script src="<?= base_url(); ?>assets/plugins/datetimepicker/datetimepicker.js"></script>
+<link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datetimepicker/datetimepicker.css">
+
+
+
 <script type="text/javascript">
    <?php if ($this->session->flashdata('successmessage')) { ?>
       const Toast = Swal.mixin({toast: true,position: 'top',showConfirmButton: false,timer: 5000});
@@ -25,16 +30,20 @@
        type: 'success',
        title: '<?= $this->session->flashdata('successmessage'); ?>'
        });
-   <?php } else if ($this->session->flashdata('warningmessage')) { ?>
+   <?php if(isset($_SESSION['successmessage'])){
+            unset($_SESSION['successmessage']);
+        } } else if ($this->session->flashdata('warningmessage')) { ?>
        const Toast = Swal.mixin({toast: true,position: 'top',showConfirmButton: false,timer: 5000});
        Toast.fire({
        type: 'error',
        title: '<?= $this->session->flashdata('warningmessage'); ?>'
        });
-   <?php } ?>
+   <?php if(isset($_SESSION['warningmessage'])){
+            unset($_SESSION['warningmessage']);
+        } } ?>
 </script>
 <?php 
-   if($seg=='booking' || $seg=='incomeexpense' || $seg=='fuels') {
+   if($seg=='booking' || $seg=='incomeexpense' || $seg=='fuels' || $seg=='partsinventory' || $seg=='driversreport') {
    ?>
 <script src="<?= base_url(); ?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/datatables/jszip.min.js"></script>
@@ -59,5 +68,81 @@
 <script src="<?php echo base_url(); ?>assets/plugins/select2/js/select2.full.min.js"></script>
 <script>$('.select2').select2()</script>
 <?php } ?>
+<?php 
+   if($seg=='vehicleavailablity') { ?>
+<script src="<?php echo base_url(); ?>assets/plugins/fullcalendar/fullcalendar.js"></script>
+<?php } ?>
+<script>
+   $('#file').change(function(){
+      var ext = $('#file').val().split('.').pop().toLowerCase();
+      if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+         alert('Invalid file, only accepts gif,png,jpg,jpeg');
+         this.value = '';
+      }
+   });
+   $('#file1').change(function(){
+      var ext = $('#file1').val().split('.').pop().toLowerCase();
+      if($.inArray(ext, ['pdf','docx']) == -1) {
+         alert('Invalid file, only accepts pdf,docx');
+         this.value = '';
+      }
+   });
+
+   $('.tr_clone_add').click(function(){
+      var $tr    = $(this).closest('.tr_clone');
+      var $clone = $tr.clone();
+      $clone.find(':text').val('');
+      $clone.find('.rm').remove();
+      $clone.find('.adddelbtn').html('<button type="button" name="add" class="btn btn-danger btn-xs tr_clone_remove"><span class="fa fa-trash"></span></button>');
+      $tr.after($clone);
+      $('.tr_clone_remove').click(function(){
+         $(this).closest('.tr_clone').remove();
+      });
+   });
+
+   function addAddress() {
+      $("#new").on("click", function() {
+         var inc = $(".row_address").length + 1,
+         $newAddressRow = `
+               <div id="${inc}" class="row row_address col-sm-6" >
+                     <input type="text" name="address" class="form-control" placeholder="Address...">
+               <button class="remove">X</button>
+            </div>
+            `;
+
+         $($newAddressRow).insertBefore($(this));
+            var $newAddressInput = $("input[name='address']:last");
+            $newAddressInput.focus();
+            applySearchAddress($newAddressInput);
+      });
+   };
+
+   function delAddress() {
+      $(document).on("click", ".remove", function() {
+         $(this).closest(".row_address").remove();
+         $("#predictions_" + $(this).closest("div").attr("id")).remove();
+      });
+   };
+
+   function applySearchAddress($input) {
+      if (google.maps.places.PlacesServiceStatus.OK != "OK") {
+      console.warn(google.maps.places.PlacesServiceStatus)
+      return false;
+      }
+      var autocomplete = new google.maps.places.Autocomplete($input.get(0));
+      
+      setTimeout(function() {
+      var rowId = $input.closest("div").attr("id");
+      $(".pac-container:last").attr("id", "predictions_" + rowId);
+      }, 100);
+   };
+   $(document).ready(function() {
+      addAddress();
+      delAddress();
+   });
+
+
+
+</script>
 </body>
 </html>

@@ -29,10 +29,11 @@
                           <th class="w-1">S.No</th>
                           <th>Customer</th>
                           <th>Vechicle</th>
+                          <th>Date</th>
                           <th>Type</th>
                           <th>Driver</th>
                           <th>Trip Status</th>
-                           <?php if(userpermission('lr_trips_list_edit')) { ?>
+                           <?php if(userpermission('lr_trips_list_edit') || userpermission('lr_booking_del')) { ?>
                           <th>Action</th>
                           <?php } ?>
                         </tr>
@@ -47,6 +48,8 @@
                            <td> <?php echo output($count); $count++; ?></td>
                            <td> <?php echo ucfirst($triplists['t_customer_details']->c_name); ?></td>
                            <td> <?php echo output($triplists['t_vechicle_details']->v_name); ?></td>
+                           <td><?php echo ucfirst(date(datetimeformat(), strtotime($triplists['t_start_date']))).'<br> to <br>'.ucfirst(date(datetimeformat(), strtotime($triplists['t_end_date']))); ?></td>
+
                            <td><?php echo ucfirst($triplists['t_type']); ?></td>
                            <td><?= (isset($triplists['t_driver_details']->d_name))?$triplists['t_driver_details']->d_name:'<span class="badge badge-danger">Yet to Assign</span>'; ?></td>
                            <td> <?php 
@@ -79,10 +82,14 @@
                             <a class="icon" href="<?php echo base_url(); ?>trips/details/<?php echo output($triplists['t_id']); ?>">
                               <i class="fa fa-eye"></i>
                             </a>
+                            <?php  } if(userpermission('lr_booking_del')) { ?> |
+                              <a data-toggle="modal" href="" onclick="confirmation('<?php echo base_url(); ?>trips/deletetrip','<?= output($triplists['t_id']); ?>')" data-target="#deleteconfirm" class="icon text-danger" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>
+                           </a> 
+                           <?php } ?>
                           </td>
                           <?php } ?>
                         </tr>
-                        <?php } } ?>
+                        <?php  } ?>
                       </tbody>
                     </table>
                    

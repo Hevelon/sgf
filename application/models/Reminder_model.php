@@ -3,6 +3,7 @@
 class reminder_model extends CI_Model{
 	
 	public function add_reminder($data) { 
+		$data['r_date'] = date("Y-m-d", strtotime($data['r_date']));
 		return	$this->db->insert('reminder',$data);
 	} 
     public function getall_reminder() { 

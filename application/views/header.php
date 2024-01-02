@@ -31,7 +31,6 @@
       <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/fontawesome-free/css/all.min.css">
       <link rel="stylesheet" href="<?= base_url(); ?>assets/dist/css/adminlte.css">
       <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/daterangepicker/daterangepicker.css">
-      <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datepicker/bootstrap-datepicker.min.css">
       <!-- Google Font: Source Sans Pro -->
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
       <script src="<?= base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
@@ -49,6 +48,8 @@
             </li>
          </ul>
          <input type="hidden" id="base" value="<?php echo base_url(); ?>">
+         <input type="hidden" id="dateformat" value="<?php echo $data["s_date_format"]; ?>">
+
          <!-- Right navbar links -->
          <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
@@ -60,3 +61,34 @@
          </ul>
       </nav>
       <!-- /.navbar -->
+
+      <script type="text/javascript">
+    function confirmation(href_url, id) {
+        $('#action').attr('action', href_url);
+        $('.del_id').val(id);
+        $("#myModal").modal('show');
+    }
+</script>
+
+
+
+
+      <div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content" style="text-align: center;">
+            <form id="action" method="post">
+            <div class="modal-header flex-column">
+            <input class="form-control del_id" type="hidden" name="del_id">                   
+                <h4 class="modal-title w-100"><b>Are you sure?</b></h4>    
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete these records?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>  

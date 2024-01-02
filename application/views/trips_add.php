@@ -20,8 +20,10 @@
        <form method="post" id="trip_add" class="card"  action="<?php echo base_url();?>Trips/<?php echo (isset($tripdetails))?'updatetrips':'inserttrips'; ?>">
          <div class="card-body">
             <div class="row">
+              <?php if(isset($tripdetails)) { ?>
                <input type="hidden" name="t_id" id="t_id" value="<?php echo (isset($tripdetails)) ? $tripdetails[0]['t_id']:'' ?>" >
-               
+              <?php } ?>     
+                        
                <div class="col-sm-6 col-md-3">
                   <label class="form-label">Customer Name<span class="form-required">*</span></label>
                   <div class="form-group">
@@ -87,13 +89,13 @@
                <div class="col-sm-6 col-md-3">
                   <div class="form-group">
                      <label class="form-label">Trip Start Date<span class="form-required">*</span></label>
-                     <input type="text" value="<?php echo (isset($tripdetails)) ? $tripdetails[0]['t_start_date']:'' ?>" name="t_start_date" value="" class="form-control datepicker" placeholder="Trip Start Date">
+                     <input type="text" value="<?php echo (isset($tripdetails)) ? date(datetimeformat(), strtotime($tripdetails[0]['t_start_date'])):'' ?>" name="t_start_date" value="" class="form-control datetimepicker" placeholder="Trip Start Date">
                   </div>
                </div>
                <div class="col-sm-6 col-md-3">
                   <div class="form-group">
                      <label class="form-label">Trip End Date<span class="form-required">*</span></label>
-                     <input type="text" value="<?php echo (isset($tripdetails)) ? $tripdetails[0]['t_end_date']:'' ?>" name="t_end_date" value="" class="form-control datepicker" placeholder="Trip End Date">
+                     <input type="text" value="<?php echo (isset($tripdetails)) ? date(datetimeformat(), strtotime($tripdetails[0]['t_end_date'])):'' ?>" name="t_end_date" value="" class="form-control datetimepicker" placeholder="Trip End Date">
                   </div>
                </div>
                 <div class="col-sm-6 col-md-3">
@@ -110,11 +112,15 @@
                       <option value="">Trip Status</option>
                       <option <?php if((isset($tripdetails)) && $tripdetails[0]['t_trip_status'] =='yettostart'){ echo 'selected';} ?> value="yettostart">Yet to start</option>
                       <option <?php if((isset($tripdetails)) && $tripdetails[0]['t_trip_status'] == 'completed'){ echo 'selected';} ?> value="completed">Completed</option>
-                      <option <?php if((isset($tripdetails)) && $tripdetails[0]['t_trip_status'] =='ongoing'){ echo 'selected';} ?> value="ongoing">Ongoing</option>
+                      <option <?php if((isset($tripdetails)) && $tripdetails[0]['t_trip_status'] =='ongoing'){ echo 'selected';} ?> value="ongoing">OnGoing</option>
                       <option <?php if((isset($tripdetails)) && $tripdetails[0]['t_trip_status'] =='cancelled'){ echo 'selected';} ?> value="cancelled">Cancelled</option>
                     </select>
                   </div>
                 </div>
+
+
+
+                
                 <?php if(!isset($tripdetails)) {  ?>
                 <div class="col-sm-6 col-md-5">
                  <div class="form-group">
@@ -130,6 +136,25 @@
            <?php } ?>
 
             </div>
+
+            <!-- <button type="button" id="new">Add address</button> -->
+
+
+
+            <!-- <div class="row tr_clone">
+                  <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Add Multiple Pickup Locations</label>
+                    <input type="text" name="t_trip_stops[]" id="t_trip_stops" class="form-control" placeholder="Enter Locations">
+                  </div>
+                  </div>
+                  
+                  <div class="col-sm-2 col-md-offset-2 ">
+                  <div class="form-group adddelbtn"> 
+                  <button type="button" name="add" class="btn btn-success btn-xs rm tr_clone_add"><span class="fa fa-plus"></span></button>
+                </div>
+                  </div>                        
+                </div>   -->
   
             <input type="hidden" id="t_trip_fromlat" name="t_trip_fromlat" value="1">
             <input type="hidden" id="t_trip_fromlog" name="t_trip_fromlog" value="1">

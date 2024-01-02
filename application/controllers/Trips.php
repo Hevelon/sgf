@@ -168,4 +168,15 @@ class Trips extends CI_Controller {
 			redirect('trips/details/'.$_GET['t_id']);
 		}
 	}
+	public function deletetrip()
+	{
+		$t_id = $this->input->post('del_id');
+		$deleteresp = $this->db->delete('trips', array('t_id' => $t_id)); 
+		if($deleteresp) {
+			$this->session->set_flashdata('successmessage', 'Trip deleted successfully..');
+		} else {
+			$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
+		}
+		redirect('trips');
+	}
 }

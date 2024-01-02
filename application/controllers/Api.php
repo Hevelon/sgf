@@ -17,41 +17,61 @@ class Api extends REST_Controller {
 
     }
     public function index_get() {
-            //$this->checkgeofence('8','22.275334996986643','70.88614147123701');
+         $write_content = var_export($_GET, true);
+            file_put_contents("myloggets.php", $write_content);
     }
 
     public function index_post()   //Get GPS feed in device
     { 
-       $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : ''; 
-       $checklogin = $this->api_model->checkgps_auth($id);   
-
- 
-       if($checklogin) 
-       { 
-        echo $v_id = $checklogin[0]['v_id'];
-        $lat = isset($_REQUEST["lat"]) ? $_REQUEST["lat"] : NULL;
-        $lon = isset($_REQUEST["lon"]) ? $_REQUEST["lon"] : NULL;
-        $timestamp = isset($_REQUEST["timestamp"]) ? $_REQUEST["timestamp"] : NULL;
-        $altitude = isset($_REQUEST["altitude"]) ? $_REQUEST["altitude"] : NULL;
-        $speed = isset($_REQUEST["speed"]) ? $_REQUEST["speed"] : NULL;
-        $bearing = isset($_REQUEST["bearing"]) ? $_REQUEST["bearing"] : NULL;
-        $accuracy = isset($_REQUEST["accuracy"]) ? $_REQUEST["accuracy"] : NULL;
-        $comment = isset($_REQUEST["comment"]) ? $_REQUEST["comment"] : NULL;
-        $postarray = array('v_id'=>$v_id,'latitude'=>$lat,'longitude'=>$lon,'time'=>date('Y-m-d h:i:s'),'altitude'=>$altitude,'speed'=>$speed,'bearing'=>$bearing,'accuracy'=>$accuracy,'comment'=>$comment);
-        $this->api_model->add_postion($postarray);
-        $this->checkgeofence($v_id,$lat,$lon);
-        $response = array('error'=>false,'message'=>['v_id' => $v_id]);
-        $this->set_response($response);
-       } 
-       
+       if(isset($_GET)) {
+           $id = isset($_GET['id']) ? $_GET['id'] : ''; 
+           $checklogin = $this->api_model->checkgps_auth($id);   
+           if($checklogin) 
+           { 
+            echo $v_id = $checklogin[0]['v_id'];
+            $lat = isset($_GET["lat"]) ? $_GET["lat"] : NULL;
+            $lon = isset($_GET["lon"]) ? $_GET["lon"] : NULL;
+            $timestamp = isset($_GET["timestamp"]) ? $_GET["timestamp"] : NULL;
+            $altitude = isset($_GET["altitude"]) ? $_GET["altitude"] : NULL;
+            $speed = isset($_GET["speed"]) ? $_GET["speed"] : NULL;
+            $bearing = isset($_GET["bearing"]) ? $_GET["bearing"] : NULL;
+            $accuracy = isset($_GET["accuracy"]) ? $_GET["accuracy"] : NULL;
+            $comment = isset($_GET["comment"]) ? $_GET["comment"] : NULL;
+            $postarray = array('v_id'=>$v_id,'latitude'=>$lat,'longitude'=>$lon,'time'=>date('Y-m-d h:i:s'),'altitude'=>$altitude,'speed'=>$speed,'bearing'=>$bearing,'accuracy'=>$accuracy,'comment'=>$comment);
+            $this->api_model->add_postion($postarray);
+            $this->checkgeofence($v_id,$lat,$lon);
+            $response = array('error'=>false,'message'=>['v_id' => $v_id]);
+            $this->set_response($response);
+           } 
+       } else {
+           $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : ''; 
+           $checklogin = $this->api_model->checkgps_auth($id);   
+           if($checklogin) 
+           { 
+            echo $v_id = $checklogin[0]['v_id'];
+            $lat = isset($_REQUEST["lat"]) ? $_REQUEST["lat"] : NULL;
+            $lon = isset($_REQUEST["lon"]) ? $_REQUEST["lon"] : NULL;
+            $timestamp = isset($_REQUEST["timestamp"]) ? $_REQUEST["timestamp"] : NULL;
+            $altitude = isset($_REQUEST["altitude"]) ? $_REQUEST["altitude"] : NULL;
+            $speed = isset($_REQUEST["speed"]) ? $_REQUEST["speed"] : NULL;
+            $bearing = isset($_REQUEST["bearing"]) ? $_REQUEST["bearing"] : NULL;
+            $accuracy = isset($_REQUEST["accuracy"]) ? $_REQUEST["accuracy"] : NULL;
+            $comment = isset($_REQUEST["comment"]) ? $_REQUEST["comment"] : NULL;
+            $postarray = array('v_id'=>$v_id,'latitude'=>$lat,'longitude'=>$lon,'time'=>date('Y-m-d h:i:s'),'altitude'=>$altitude,'speed'=>$speed,'bearing'=>$bearing,'accuracy'=>$accuracy,'comment'=>$comment);
+            $this->api_model->add_postion($postarray);
+            $this->checkgeofence($v_id,$lat,$lon);
+            $response = array('error'=>false,'message'=>['v_id' => $v_id]);
+            $this->set_response($response);
+           } 
+       }
     }
     public function positions_post()     //Postion feed to front end   
     {
         $this->db->select("*");
         $this->db->from('positions');
         $this->db->where('v_id',$this->post('t_vechicle'));
-        $this->db->where('date(time) >=', $this->post('fromdate'));
-        $this->db->where('date(time) <=', $this->post('todate'));
+        $this->db->where('date(time) >=', date("Y-m-d", strtotime(str_replace('/', '-', $this->post('fromdate')))));
+        $this->db->where('date(time) <=', date("Y-m-d", strtotime(str_replace('/', '-', $this->post('todate')))));
         $query = $this->db->get();
         $data = $query->result_array();
         $distancefrom = reset($data);

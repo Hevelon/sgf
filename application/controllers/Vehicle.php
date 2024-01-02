@@ -20,6 +20,7 @@ class Vehicle extends CI_Controller {
 	public function addvehicle()
 	{
 		$data['v_group'] = $this->vehicle_model->get_vehiclegroup();
+		$data['traccar_list'] = json_decode(traccar_call('api/devices','','GET'),true);
 		$this->template->template_render('vehicle_add',$data);
 	}
 	public function insertvehicle()
@@ -32,19 +33,14 @@ class Vehicle extends CI_Controller {
 		$this->form_validation->set_rules('v_manufactured_by','Manufactured By','required|trim');
 		$this->form_validation->set_rules('v_type','Vehicle Type','required|trim');
 		$this->form_validation->set_rules('v_color','Vehicle Color','required|trim');
-		$testxss = xssclean($_POST);
-		if($this->form_validation->run()==TRUE && $testxss){
+		if($this->form_validation->run()==TRUE){
 			$response = $this->vehicle_model->add_vehicle($this->input->post());
 			if($response) {
 				$this->session->set_flashdata('successmessage', 'New vehicle added successfully..');
 			    redirect('vehicle');
 			}
 		} else	{
-			$errormsg = validation_errors();
-			if(!$testxs) {
-				$errormsg = 'Error! Your input are not allowed.Please try again';
-			}
-			$this->session->set_flashdata('warningmessage',$errormsg);
+			$this->session->set_flashdata('warningmessage',preg_replace( "/\r|\n/", "", trim(str_replace('.',',',strip_tags(validation_errors())))));
 			redirect('vehicle/addvehicle');
 		}
 	}
@@ -53,11 +49,43 @@ class Vehicle extends CI_Controller {
 		$v_id = $this->uri->segment(3);
 		$data['v_group'] = $this->vehicle_model->get_vehiclegroup();
 		$data['vehicledetails'] = $this->vehicle_model->get_vehicledetails($v_id);
+		$data['traccar_list'] = json_decode(traccar_call('api/devices','','GET'),true);
 		$this->template->template_render('vehicle_add',$data);
 	}
 
 	public function updatevehicle()
 	{
+		if(!empty($_FILES)) {
+			$config['upload_path'] = 'assets/uploads/';
+			$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf|docx'; 
+			$this->load->library('upload', $config); 
+			if(!empty($_FILES['file']['name'][0])){ 
+				$uploadData = '';
+				$this->upload->initialize($config); 
+				$_FILES['file']['name']     = $_FILES['file']['name']; 
+				$_FILES['file']['type']     = $_FILES['file']['type']; 
+				$_FILES['file']['tmp_name'] = $_FILES['file']['tmp_name']; 
+				$_FILES['file']['error']     = $_FILES['file1']['error']; 
+				$_FILES['file']['size']     = $_FILES['file']['size']; 
+				if($this->upload->do_upload('file')){ 
+					$uploadData = $this->upload->data();
+					$_POST['v_file'] = $uploadData['file_name'];
+				}
+			} 
+			if(!empty($_FILES['file1']['name'][1])){ 
+				$uploadData = '';
+				$this->upload->initialize($config); 
+				$_FILES['file']['name']     = $_FILES['file1']['name']; 
+				$_FILES['file']['type']     = $_FILES['file1']['type']; 
+				$_FILES['file']['tmp_name'] = $_FILES['file1']['tmp_name']; 
+				$_FILES['file']['error']     = $_FILES['file1']['error']; 
+				$_FILES['file']['size']     = $_FILES['file1']['size']; 
+				if($this->upload->do_upload('file1')){ 
+					$uploadData = $this->upload->data();
+					$_POST['v_file1'] = $uploadData['file_name'];
+				}
+			} 
+		}
 		$testxss = xssclean($_POST);
 		if($testxss){
 			$response = $this->vehicle_model->edit_vehicle($this->input->post());
@@ -121,5 +149,16 @@ class Vehicle extends CI_Controller {
 			$this->session->set_flashdata('warningmessage', 'Something went wrong..Try again');
 		    redirect('vehicle/vehiclegroup');
 		}
+	}
+	public function deletevehicle()
+	{
+		$v_id = $this->input->post('del_id');
+		$deleteresp = $this->db->delete('vehicles', array('v_id' => $v_id)); 
+		if($deleteresp) {
+			$this->session->set_flashdata('successmessage', 'Vehicle deleted successfully..');
+		} else {
+			$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
+		}
+		redirect('vehicle');
 	}
 }

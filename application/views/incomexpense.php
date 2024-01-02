@@ -33,7 +33,7 @@
                           <th>Description</th>
                           <th>Amount</th>
                           <th>Type</th>
-                          <?php if(userpermission('lr_ie_edit')) { ?>
+                          <?php if(userpermission('lr_ie_edit') || userpermission('lr_ie_del')) { ?>
                           <th>Action</th>
                           <?php } ?>
                         </tr>
@@ -46,18 +46,22 @@
                         <tr>
                            <td> <?php echo output($count); $count++; ?></td>
                            <td> <?php echo output($incomexpenses['vech_name']->v_name).'_'.output($incomexpenses['vech_name']->v_registration_no); ?></td>
-                           <td> <?php echo output($incomexpenses['ie_date']); ?></td>
+                           <td> <?php echo output(date(dateformat(), strtotime($incomexpenses['ie_date']))); ?></td>
 
                            <td><?php echo output($incomexpenses['ie_description']); ?></td>
-                         <td><?php echo output($incomexpenses['ie_amount']); ?></td>
-                          <td>  <span class="badge <?php echo ($incomexpenses['ie_type']=='income') ? 'badge-success' : 'badge-danger'; ?> "><?php echo ($incomexpenses['ie_type']=='income') ? 'Income' : 'Expense'; ?></span>  </td>
-                          <?php if(userpermission('lr_ie_edit')) { ?>
-                              <td>
+                           <td><?php echo output($incomexpenses['ie_amount']); ?></td>
+                           <td><span class="badge <?php echo ($incomexpenses['ie_type']=='income') ? 'badge-success' : 'badge-danger'; ?>"><?php echo ($incomexpenses['ie_type']=='income') ? 'Income' : 'Expense'; ?></span>  
+                           </td>
+                            <td>
+                            <?php if(userpermission('lr_ie_edit')) { ?>
                             <a class="icon" href="<?php echo base_url(); ?>incomexpense/editincomexpense/<?php echo output($incomexpenses['ie_id']); ?>">
                               <i class="fa fa-edit"></i>
                             </a>
+                            <?php } if(userpermission('lr_ie_del')) { ?> |
+                              <a data-toggle="modal" href="" onclick="confirmation('<?php echo base_url(); ?>incomexpense/deleteincomexpense','<?= output($incomexpenses['ie_id']); ?>')" data-target="#deleteconfirm" class="icon text-danger" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>
+                            </a> 
+                            <?php } ?>
                           </td>
-                        <?php } ?>
                         </tr>
                         <?php } ?>
                       </tbody>

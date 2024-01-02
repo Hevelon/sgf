@@ -75,4 +75,15 @@ class Fuel extends CI_Controller {
 			redirect('fuel');
 		}
 	}
+	public function deletefuel()
+	{
+		$v_fuel_id = $this->input->post('del_id');
+		$deleteresp = $this->db->delete('fuel', array('v_fuel_id' => $v_fuel_id)); 
+		if($deleteresp) {
+			$this->session->set_flashdata('successmessage', 'Fuel deleted successfully..');
+		} else {
+			$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
+		}
+		redirect('fuel');
+	}
 }

@@ -86,3 +86,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		return false;
     	}
     }
+	function dateformat() {
+    	return substr(sitedata()['s_date_format'], 0, strrpos(sitedata()['s_date_format'], ' '));
+    }
+	function datetimeformat() {
+    	return sitedata()['s_date_format'];
+    }
+	function traccar_call($service,$data,$method=false) {
+        $traccaruname = sitedata()['s_traccar_username'];
+        $traccarpassword = sitedata()['s_traccar_password'];
+	    $CI =& get_instance();
+	    $path=gethostbyname(sitedata()['s_traccar_url']).$service;
+	    $ch = curl_init(); 
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	    if($method) {
+	        curl_setopt($ch, CURLOPT_URL, $path);
+	        if($data) {
+	            curl_setopt($ch, CURLOPT_POST, 1);
+	            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	        }
+	        if($method == 'PUT'){
+	            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+	        }
+	        if($method == 'DELETE'){
+	            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+	        }
+	    }
+	    $headers = array(
+		    'Content-Type:application/json',
+		    'Authorization: Basic '. base64_encode($traccaruname.':'.$traccarpassword)
+		);
+	    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	    $result = curl_exec($ch);
+	    curl_close($ch);
+      
+	    return $result;
+	}

@@ -30,8 +30,14 @@ class User_model extends CI_Model{
 		$this->db->where('u_id',$data['basic']['u_id']);
 		$this->db->update('login',$userup);
 		$role = $data['permissions'];
+		$fields = $this->db->list_fields('login_roles');
+		foreach ($fields as $field)
+		{
+			$up[$field] = isset($role[$field]) ? 1:0;
+		}
+		unset($up['lr_u_id']); unset($up['lr_id']);
 
 		$this->db->where('lr_u_id',$data['basic']['u_id']);
-		return $this->db->update('login_roles',$role);
+		return $this->db->update('login_roles',$up);
 	}
 } 

@@ -22,8 +22,10 @@
 
                  
                   <div class="row">
-                   <input type="hidden" name="ie_id" id="ie_id" value="<?php echo (isset($incomexpensedetails)) ? $incomexpensedetails[0]['ie_id']:'' ?>" >
+                                        <?php if(isset($incomexpensedetails)) { ?>
 
+                   <input type="hidden" name="ie_id" id="ie_id" value="<?php echo (isset($incomexpensedetails)) ? $incomexpensedetails[0]['ie_id']:'' ?>" >
+                 <?php } ?>
                     <div class="col-sm-6 col-md-3">
                           <label class="form-label">Vechicle<span class="form-required">*</span></label>
                       <div class="form-group">
@@ -48,7 +50,7 @@
                     <div class="col-sm-6 col-md-3">
                       <div class="form-group">
                           <label class="form-label">Date<span class="form-required">*</span></label>
-                         <input type="text" class="form-control datepicker" id="ie_date" name="ie_date" value="<?php echo (isset($incomexpensedetails)) ? $incomexpensedetails[0]['ie_date']:'' ?>" placeholder="Income/Expense">
+                         <input type="text" class="form-control datepicker" id="ie_date" name="ie_date" value="<?php echo (isset($incomexpensedetails)) ? date(dateformat(), strtotime($incomexpensedetails[0]['ie_date'])):'' ?>" placeholder="Income/Expense">
 
                       </div>
                     </div>

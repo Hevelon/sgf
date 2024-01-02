@@ -26,13 +26,16 @@
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
+                <?php if($vehicledetails['v_file']!='') { ?>
                 <div class="text-center">
-                 
+                    <img class="profile-user-img img-fluid img-circle" src="<?= base_url(); ?>assets/uploads/<?= ucwords($vehicledetails['v_file']); ?>">
                 </div>
-
+                <?php } ?>
                 <h3 class="profile-username text-center"><?= ucwords($vehicledetails['v_name']); ?></h3>
 
                 <p class="text-muted text-center"><?= ucwords($vehicledetails['v_type']); ?></p>
+
+                
 
                 <p class="text-muted text-center"><?= ($vehicledetails['v_is_active']==1)?'<span class="right badge badge-success">Active</span>':'<span class="right badge badge-danger">Inactive</span>' ?></p>
 
@@ -306,6 +309,15 @@
                      <tr>
                       <td>Modified Date</td>
                       <td><?= output($vehicledetails['v_modified_date']) ?></td>
+                    </tr>
+                    <tr>
+                      <td>Document</td>
+                      <td><?php if($vehicledetails['v_file1']!='') { ?>
+                        <a target="_blank" href="<?= base_url(); ?>assets/uploads/<?= ucwords($vehicledetails['v_file1']); ?>" class="">
+                          View/Download
+                        </a>
+                        <?php } else { echo '-'; } ?>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

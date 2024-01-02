@@ -21,15 +21,16 @@
           <div class="card-body"> 
 
                   <div class="row">
+                     <?php if(isset($customerdetails)) { ?>
                    <input type="hidden" name="c_id" id="c_id" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_id']:'' ?>" >
-
-                    <div class="col-sm-6 col-md-3">
+                 <?php } ?>
+                    <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                           <label class="form-label">Name<span class="form-required">*</span></label>
                           <input type="text" required="true" class="form-control" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_name']:'' ?>" id="c_name" name="c_name" placeholder="Customer Name">
                       </div>
                     </div>
-                    <div class="col-sm-6 col-md-3">
+                    <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                          <label class="form-label">Mobile<span class="form-required">*</span></label>
                           <input type="text" required="true" class="form-control" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_mobile']:'' ?>" id="c_mobile" name="c_mobile" placeholder="Customer Mobile">
@@ -43,7 +44,7 @@
                       </div>
                     </div>
                      <?php if(isset($customerdetails[0]['c_isactive'])) { ?>
-                    <div class="col-sm-6 col-md-2">
+                    <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                           <label for="c_isactive" class="form-label">Customer Status</label>
                         <select id="c_isactive" name="c_isactive" class="form-control " required="">
@@ -52,10 +53,11 @@
                           <option <?php echo (isset($customerdetails) && $customerdetails[0]['c_isactive']==0) ? 'selected':'' ?> value="0">Inactive</option> 
                         </select>
                       </div>
-                    <?php } ?>
-                    </div>
+                      </div>
 
-                    <div class="col-sm-6 col-md-6">
+                    <?php } ?>
+
+                    <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                        <label class="form-label">Address<span class="form-required">*</span></label>
                         <textarea class="form-control" required="true" id="c_address" autocomplete="off" placeholder="Address"  name="c_address"><?php echo (isset($customerdetails)) ? $customerdetails[0]['c_address']:'' ?></textarea>

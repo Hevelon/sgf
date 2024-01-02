@@ -58,17 +58,18 @@
                         <input type="text" class="form-control" required="true" value="<?php echo output(isset($website_setting[0]['s_price_prefix'])?$website_setting[0]['s_price_prefix']:''); ?>" id="s_price_prefix" name="s_price_prefix" placeholder="Enter Currency Prefix">
                      </div>
                   </div>
+                  
+                  <div class="col-sm-6 col-md-4">
+                     <div class="form-group">
+                        <label>Inovice Service Name</label>
+                        <input type="text" class="form-control" required="true" value="<?php echo output(isset($website_setting[0]['s_inovice_servicename'])?$website_setting[0]['s_inovice_servicename']:''); ?>" id="s_inovice_servicename" name="s_inovice_servicename" placeholder="Inovice Service Name">
+                     </div>
+                  </div>
                   <div class="col-sm-6 col-md-4">
                      <div class="form-group">
                         <label>Inovice Terms and condition</label>
                         <textarea id="s_inovice_termsandcondition" name="s_inovice_termsandcondition" rows="4" cols="50" class="form-control" required="true" placeholder="Enter Currency Prefix"><?php echo output(isset($website_setting[0]['s_inovice_termsandcondition'])?$website_setting[0]['s_inovice_termsandcondition']:''); ?>
                         </textarea>
-                     </div>
-                  </div>
-                  <div class="col-sm-6 col-md-4">
-                     <div class="form-group">
-                        <label>Inovice Service Name</label>
-                        <input type="text" class="form-control" required="true" value="<?php echo output(isset($website_setting[0]['s_inovice_servicename'])?$website_setting[0]['s_inovice_servicename']:''); ?>" id="s_inovice_servicename" name="s_inovice_servicename" placeholder="Inovice Service Name">
                      </div>
                   </div>
                   <div class="col-sm-6 col-md-4">
@@ -84,6 +85,16 @@
                      <button type="button" class="logodelete btn btn-primary">Delete</button>
                      <?php } ?>
                   </div>
+                  <div class="col-sm-6 col-md-3">
+                      <div class="form-group">
+                        <label for="s_date_format" class="form-label">Date Format</label>
+                        <select id="s_date_format" name="s_date_format" class="form-control " required="">
+                         <option <?php echo (isset($website_setting) && $website_setting[0]['s_date_format']=='Y-m-d H:i') ? 'selected':'' ?> value="Y-m-d H:i">Y-m-d H:i</option>
+                          <option <?php echo (isset($website_setting) && $website_setting[0]['s_date_format']=='m-d-Y H:i') ? 'selected':'' ?> value="m-d-Y H:i">m-d-Y H:i</option> 
+                          <option <?php echo (isset($website_setting) && $website_setting[0]['s_date_format']=='d-m-Y H:i') ? 'selected':'' ?> value="d-m-Y H:i">d-m-Y H:i</option> 
+                        </select>
+                      </div>
+                    </div>     
                   <div id="addnewcategory_submit" class="btn-block text-right mt-3">
                      <button type="submit" class="btn btn-primary">Submit</button>
                   </div>

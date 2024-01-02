@@ -21,8 +21,9 @@
           <div class="card-body">
 
                   <div class="row">
+                    <?php if(isset($fueldetails)) { ?>
                    <input type="hidden" name="v_fuel_id" id="v_fuel_id" value="<?php echo (isset($fueldetails)) ? $fueldetails[0]['v_fuel_id']:'' ?>" >
-
+                 <?php  } ?>
                     <div class="col-sm-6 col-md-3">
                           <label class="form-label">Vechicle<span class="form-required">*</span></label>
                       <div class="form-group">
@@ -48,7 +49,7 @@
                    <div class="col-sm-6 col-md-3">
                       <div class="form-group">
                           <label class="form-label">Fill Date<span class="form-required">*</span></label>
-                         <input type="text" required="true" class="form-control datepicker" id="v_fuelfilldate" name="v_fuelfilldate" value="<?php echo (isset($fueldetails)) ? $fueldetails[0]['v_fuelfilldate']:'' ?>" placeholder="Fuel Fill Date">
+                         <input type="text" required="true" class="form-control datepicker" id="v_fuelfilldate" name="v_fuelfilldate" value="<?php echo (isset($fueldetails)) ? date(dateformat(), strtotime($fueldetails[0]['v_fuelfilldate'])):'' ?>" placeholder="Fuel Fill Date">
 
                       </div>
                     </div>
@@ -87,7 +88,7 @@
                       </div>
                     </div>
                 	<?php } ?>
-
+                  </div>
       
                 </div>
                  <input type="hidden" id="v_created_date" name="v_created_date" value="<?php echo date('Y-m-d h:i:s'); ?>">

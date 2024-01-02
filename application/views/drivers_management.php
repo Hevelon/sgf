@@ -28,13 +28,15 @@
                   <thead>
                      <tr>
                         <th class="w-1">S.No</th>
+                        <th>Photo</th>
                         <th>Name</th>
                         <th>Mobile</th>
                         <th>License No</th>
                         <th>License Exp Date</th>
                         <th>Date of Joining</th>
+                        <th>Doc</th>
                         <th>Is Active</th>
-                        <?php if(userpermission('lr_drivers_list_edit')) { ?>
+                        <?php if(userpermission('lr_drivers_list_edit') || userpermission('lr_driver_del')) { ?>
                         <th>Action</th>
                         <?php } ?>
                      </tr>
@@ -45,19 +47,31 @@
                         ?>
                      <tr>
                         <td> <?php echo output($count); $count++; ?></td>
+                        <td><?php if($driverslists['d_file']!='') { ?>
+                           <img class="img-fluid" style="width: 58px;" src="<?= base_url(); ?>assets/uploads/<?= ucwords($driverslists['d_file']); ?>">
+                        <?php } ?></td>
                         <td> <?php echo output($driverslists['d_name']); ?></td>
                         <td> <?php echo output($driverslists['d_mobile']); ?></td>
                         <td><?php echo output($driverslists['d_licenseno']); ?></td>
-                        <td><?php echo output($driverslists['d_license_expdate']); ?></td>
-                        <td><?php echo output($driverslists['d_doj']); ?></td>
+                        <td><?php echo output(date(dateformat(), strtotime($driverslists['d_license_expdate']))); ?></td>
+                        <td><?php echo output(date(dateformat(), strtotime($driverslists['d_doj']))); ?></td>
+                        <td><?php if($driverslists['d_file1']!='') { ?>
+                        <a target="_blank" href="<?= base_url(); ?>assets/uploads/<?= ucwords($driverslists['d_file1']); ?>" class="">
+                          View
+                        </a>
+                        <?php } else { echo '-'; } ?></td>
                         <td>  <span class="badge <?php echo ($driverslists['d_is_active']=='1') ? 'badge-success' : 'badge-danger'; ?> "><?php echo ($driverslists['d_is_active']=='1') ? 'Active' : 'Inactive'; ?></span>  </td>
-                        <?php if(userpermission('lr_drivers_list_edit')) { ?>
                         <td>
+                           <?php if(userpermission('lr_drivers_list_edit')) { ?>
                            <a class="icon" href="<?php echo base_url(); ?>drivers/editdriver/<?php echo output($driverslists['d_id']); ?>">
                            <i class="fa fa-edit"></i>
                            </a>
+                           <?php  } if(userpermission('lr_driver_del')) { ?> |
+                              <a data-toggle="modal" href="" onclick="confirmation('<?php echo base_url(); ?>drivers/deletedriver','<?= output($driverslists['d_id']); ?>')" data-target="#deleteconfirm" class="icon text-danger" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>
+                           </a> 
+                           <?php } ?>
                         </td>
-                        <?php } }  } ?>
+                        <?php }  } ?>
                      </tr>
                   </tbody>
                </table>

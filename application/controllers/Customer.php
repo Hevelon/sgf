@@ -68,4 +68,15 @@ class Customer extends CI_Controller {
 			redirect('customer');
 		}
 	}
+	public function deletecustomer()
+	{
+		$c_id = $this->input->post('del_id');
+		$deleteresp = $this->db->delete('customers', array('c_id' => $c_id)); 
+		if($deleteresp) {
+			$this->session->set_flashdata('successmessage', 'Customer deleted successfully..');
+		} else {
+			$this->session->set_flashdata('warningmessage', 'Unexpected error..Try again');
+		}
+		redirect('customer');
+	}
 }

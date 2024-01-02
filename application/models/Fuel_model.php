@@ -4,6 +4,7 @@ class Fuel_model extends CI_Model{
 	
 	public function add_fuel($data) { 
 		unset($data['exp']);
+		$data['v_fuelfilldate'] = date("Y-m-d", strtotime($data['v_fuelfilldate']));
 		return	$this->db->insert('fuel',$data);
 	} 
     public function getall_fuel() { 
@@ -24,6 +25,7 @@ class Fuel_model extends CI_Model{
 		return $this->db->select('*')->from('fuel')->where('v_fuel_id',$f_id)->get()->result_array();
 	}
 	public function updatefuel() { 
+		$_POST['v_fuelfilldate'] = date("Y-m-d", strtotime($_POST['v_fuelfilldate']));
 		$this->db->where('v_fuel_id',$this->input->post('v_fuel_id'));
 		return $this->db->update('fuel',$this->input->post());
 	}

@@ -17,13 +17,14 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <form method="post" id="add_driver" class="card" action="<?php echo base_url();?>drivers/<?php echo (isset($driverdetails))?'updatedriver':'insertdriver'; ?>">
+        <form method="post" id="add_driver" class="card" enctype="multipart/form-data" action="<?php echo base_url();?>drivers/<?php echo (isset($driverdetails))?'updatedriver':'insertdriver'; ?>">
                 <div class="card-body">
 
                   
                   <div class="row">
+                    <?php if(isset($driverdetails)) { ?>
                    <input type="hidden" name="d_id" id="d_id" value="<?php echo (isset($driverdetails)) ? $driverdetails[0]['d_id']:'' ?>" >
-
+                 <?php } ?>
                     <div class="col-sm-6 col-md-3">
                         <label class="form-label">Driver Name<span class="form-required">*</span></label>
                       <div class="form-group">
@@ -51,7 +52,7 @@
                     <div class="col-sm-6 col-md-3">
                       <div class="form-group">
                         <label class="form-label">License Expiry Date<span class="form-required">*</span></label>
-                        <input type="text" name="d_license_expdate" value="<?php echo (isset($driverdetails)) ? $driverdetails[0]['d_license_expdate']:'' ?>" class="form-control datepickerpastdisable" placeholder="License Expiry Date" >
+                        <input type="text" name="d_license_expdate" value="<?php echo (isset($driverdetails)) ? date(dateformat(), strtotime($driverdetails[0]['d_license_expdate'])):'' ?>" class="form-control datepicker" placeholder="License Expiry Date" >
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
@@ -63,7 +64,7 @@
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
                         <label class="form-label">Date of Joining<span class="form-required">*</span></label>
-                        <input type="text" name="d_doj" value="<?php echo (isset($driverdetails)) ? $driverdetails[0]['d_doj']:'' ?>" class="form-control datepicker" placeholder="Date of Joining" >
+                        <input type="text" name="d_doj" value="<?php echo (isset($driverdetails)) ? date(dateformat(), strtotime($driverdetails[0]['d_doj'])):'' ?>" class="form-control datepicker" placeholder="Date of Joining" >
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
@@ -88,6 +89,20 @@
                           <option <?php echo (isset($driverdetails) && $driverdetails[0]['d_is_active']==0) ? 'selected':'' ?> value="0">Inactive</option> 
                         </select>
                       </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                      <label class="form-label">Driver Photo</label>
+                      <input type="file" id="file" name="file" class="form-control"/>
+                    </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                      <label class="form-label">Driver Document</label>
+                      <input type="file" id="file1" name="file1" class="form-control"/>
+                    </div>
                     </div>
                     </div>
       

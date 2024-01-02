@@ -15,6 +15,16 @@
                   </p>
                </a>
             </li>
+            <?php if(userpermission('lr_vech_availablity')) { ?>
+            <li class="nav-item">
+               <a href="<?= base_url(); ?>vehicleavailablity" class="nav-link <?php echo activate_menu('vehicleavailablity');?>">
+                  <i class="nav-icon fa fa-calendar" aria-hidden="true"></i>
+                  <p>
+                  Availability
+                  </p>
+               </a>
+            </li>
+               <?php } ?>
             <li class="nav-item has-treeview <?php echo ((activate_menu('vehicle'))=='active') ? 'menu-open':'' ?>
                <?php echo ((activate_menu('addvehicle'))=='active') ? 'menu-open':'' ?> <?php echo ((activate_menu('viewvehicle'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('editvehicle'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('vehiclegroup'))=='active') ? 'menu-open':'' ?>">
                <a href="#" class="nav-link <?php echo activate_menu('vehicle');?> <?php echo activate_menu('addvehicle');?><?php echo activate_menu('viewvehicle');?><?php echo activate_menu('editvehicle');?><?php echo activate_menu('vehiclegroup');?>">
@@ -135,7 +145,64 @@
                    <?php } ?>
                </ul>
             </li>
-            <?php }  if(userpermission('lr_fuel_list') || userpermission('lr_fuel_add')) { ?>
+            <?php } ?>
+            <?php  if(userpermission('lr_maintenace')) { ?>
+            <li class="nav-item has-treeview <?php echo ((activate_menu('maintenance'))=='active') ? 'menu-open':'' ?>
+               <?php echo ((activate_menu('addmaintenance'))=='active') ? 'menu-open':'' ?> ">
+               <a href="#" class="nav-link <?php echo activate_menu('maintenance');?> <?php echo activate_menu('addmaintenance');?><?php echo activate_menu('editfuel');?>">
+                  <i class="nav-icon fa fa-wrench"></i>
+                  <p>
+                  Maintenance
+                     <i class="right fas fa-angle-left"></i>
+                  </p>
+               </a>
+               <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                     <a href="<?= base_url(); ?>maintenance" class="nav-link <?php echo activate_menu('maintenance');?> <?php echo activate_menu('editfuel');?>">
+                        <i class="nav-icon fas faa-list"></i>
+                        <p>Maintenance</p>
+                     </a>
+                  </li>
+                  <?php  if(userpermission('lr_maintenace_add')) { ?>
+                  <li class="nav-item">
+                     <a href="<?= base_url(); ?>maintenance/addmaintenance" class="nav-link <?php echo activate_menu('addmaintenance');?>">
+                        <i class="nav-icon fas faa-plus"></i>
+                        <p>Add Maintenance</p>
+                     </a>
+                  </li>
+                  <?php  } ?>
+               </ul>
+            </li>
+            <?php } ?>
+
+            <?php  if(userpermission('lr_parts')) { ?>
+            <li class="nav-item has-treeview <?php echo ((activate_menu('partsinventory'))=='active') ? 'menu-open':'' ?>
+               <?php echo ((activate_menu('addpartsinventory'))=='active') ? 'menu-open':'' ?> ">
+               <a href="#" class="nav-link <?php echo activate_menu('partsinventory');?><?php echo activate_menu('addpartsinventory');?> ">
+                  <i class="nav-icon fa fa-microchip"></i>
+                  <p>
+                  Parts Inventory
+                     <i class="right fas fa-angle-left"></i>
+                  </p>
+               </a>
+               <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                     <a href="<?= base_url(); ?>partsinventory" class="nav-link <?php echo activate_menu('partsinventory');?>">
+                        <i class="nav-icon fas faa-list"></i>
+                        <p>Parts Inventory</p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="<?= base_url(); ?>partsinventory/addpartsinventory" class="nav-link <?php echo activate_menu('addpartsinventory');?>">
+                        <i class="nav-icon fas faa-plus"></i>
+                        <p>Add Parts Inventory</p>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <?php } ?>
+
+            <?php  if(userpermission('lr_fuel_list') || userpermission('lr_fuel_add')) { ?>
             <li class="nav-item has-treeview <?php echo ((activate_menu('fuel'))=='active') ? 'menu-open':'' ?>
                <?php echo ((activate_menu('addfuel'))=='active') ? 'menu-open':'' ?> <?php echo ((activate_menu('editfuel'))=='active') ? 'menu-open':'' ?>">
                <a href="#" class="nav-link <?php echo activate_menu('fuel');?> <?php echo activate_menu('addfuel');?><?php echo activate_menu('editfuel');?>">
@@ -283,8 +350,8 @@
                </ul>
             </li>
           <?php }  if(userpermission('lr_reports')) { ?>
-            <li class="nav-item has-treeview <?php echo ((activate_menu('incomeexpense'))=='active') ? 'menu-open':'' ?> <?php echo ((activate_menu('booking'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('fuels'))=='active') ? 'menu-open':'' ?>">
-               <a href="#" class="nav-link <?php echo activate_menu('booking');?><?php echo activate_menu('fuels');?><?php echo activate_menu('incomeexpense');?>">
+            <li class="nav-item has-treeview <?php echo ((activate_menu('driversreport'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('incomeexpense'))=='active') ? 'menu-open':'' ?> <?php echo ((activate_menu('booking'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('fuels'))=='active') ? 'menu-open':'' ?>">
+               <a href="#" class="nav-link <?php echo activate_menu('booking');?><?php echo activate_menu('fuels');?><?php echo activate_menu('driversreport');?><?php echo activate_menu('incomeexpense');?>">
                   <i class="nav-icon fa fa-calculator" aria-hidden="true"></i>
                   <p>
                      Reports
@@ -310,11 +377,17 @@
                         <p>Fuel</p>
                      </a>
                   </li>
+                  <li class="nav-item">
+                     <a href="<?= base_url(); ?>reports/driversreport" class="nav-link <?php echo activate_menu('driversreport');?>">
+                        <i class="nav-icon fas faa-plus"></i>
+                        <p>Driver</p>
+                     </a>
+                  </li>
                </ul>
             </li>
             <?php } if(userpermission('lr_settings')) { ?>
-            <li class="nav-item has-treeview <?php echo ((activate_menu('websitesetting'))=='active') ? 'menu-open':'' ?> <?php echo ((activate_menu('smtpconfig'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('email_template'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('edit_email_template'))=='active') ? 'menu-open':'' ?>">
-               <a href="#" class="nav-link <?php echo activate_menu('websitesetting');?><?php echo activate_menu('email_template');?> <?php echo activate_menu('smtpconfig');?><?php echo activate_menu('edit_email_template');?>">
+            <li class="nav-item has-treeview <?php echo ((activate_menu('websitesetting'))=='active') ? 'menu-open':'' ?> <?php echo ((activate_menu('websitesetting_traccar'))=='active') ? 'menu-open':'' ?> <?php echo ((activate_menu('smtpconfig'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('email_template'))=='active') ? 'menu-open':'' ?><?php echo ((activate_menu('edit_email_template'))=='active') ? 'menu-open':'' ?>">
+               <a href="#" class="nav-link <?php echo activate_menu('websitesetting');?><?php echo activate_menu('email_template');?><?php echo activate_menu('websitesetting_traccar');?> <?php echo activate_menu('smtpconfig');?><?php echo activate_menu('edit_email_template');?>">
                   <i class="nav-icon fa fa-dollar-sign"></i>
                   <p>
                      Setting's
@@ -338,6 +411,12 @@
                      <a href="<?= base_url(); ?>settings/email_template" class="nav-link <?php echo activate_menu('email_template');?><?php echo activate_menu('edit_email_template');?>">
                         <i class="nav-icon fas faa-plus"></i>
                         <p>Email Template</p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="<?= base_url(); ?>settings/websitesetting_traccar" class="nav-link <?php echo activate_menu('websitesetting_traccar');?>">
+                        <i class="nav-icon fas faa-plus"></i>
+                        <p>Traccar Config</p>
                      </a>
                   </li>
                </ul>

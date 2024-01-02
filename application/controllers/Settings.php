@@ -126,5 +126,20 @@ class Settings extends CI_Controller {
 		}
 		redirect('settings/email_template');
 	}
+	public function websitesetting_traccar()   
+	{
+		$data['website_setting'] = $this->db->select('*')->from('settings')->get()->result_array();
+		$this->template->template_render('websitesetting_traccar',$data);
+	}
+	public function traccarconfigsave()   
+	{
+		$response = $this->db->update('settings',$this->input->post());
+        if($response) {
+				$this->session->set_flashdata('successmessage', 'Traccar settings saved successfully..');
+		} else {
+			$this->session->set_flashdata('warningmessage', 'Something went wrong..Try again');
+		}
+		redirect('settings/websitesetting_traccar');
+	}
 }
  

@@ -22,28 +22,29 @@
 
 
                   <div class="row">
+                    <?php if(isset($userdetails)) { ?>
                    <input type="hidden" name="basic[u_id]" id="u_id"  value="<?php echo (isset($userdetails)) ? $userdetails[0]['u_id']:'' ?>" >
-
-                    <div class="col-sm-6 col-md-4">
+                 <?php } ?>
+                    <div class="col-sm-4 col-md-3">
                         <label class="form-label">Name</label>
                       <div class="form-group">
                         <input type="text" name="basic[u_name]" id="u_name" required="true" class="form-control" placeholder="Name" value="<?php echo (isset($userdetails)) ? $userdetails[0]['u_name']:'' ?>">
                       </div>
                     </div>
-                    <div class="col-sm-6 col-md-4">
+                    <div class="col-sm-4 col-md-3">
                         <label class="form-label">Email</label>
                       <div class="form-group">
                         <input type="text" name="basic[u_email]" id="u_email" required="true" class="form-control" placeholder="Email" value="<?php echo (isset($userdetails)) ? $userdetails[0]['u_email']:'' ?>">
                       </div>
                     </div>
-                    <div class="col-sm-6 col-md-4">
+                    <div class="col-sm-4 col-md-3">
                         <label class="form-label">User Name</label>
                       <div class="form-group">
                         <input type="text" name="basic[u_username]" id="u_username" required="true" class="form-control" placeholder="User Name" value="<?php echo (isset($userdetails)) ? $userdetails[0]['u_username']:'' ?>">
                       </div>
                     </div>
                      <?php if(!isset($userdetails[0]['u_password'])) { ?>
-                    <div class="col-sm-6 col-md-4">
+                    <div class="col-sm-4 col-md-3">
                       <div class="form-group">
                         <label class="form-label">Password</label>
                         <input type="text" name="basic[u_password]" required="true" value="<?php echo (isset($userdetails)) ? $userdetails[0]['u_password']:'' ?>" class="form-control" placeholder="Password">
@@ -96,6 +97,14 @@
                           <label class="custom-control-label" for="lr_vech_add">Add</label>
                         </div>
                       </div>
+
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_vech_del']==1 ? 'checked' : ''); } ?> name="permissions[lr_vech_del]" class="custom-control-input" id="lr_vech_del">
+                          <label class="custom-control-label" for="lr_vech_del">Delete</label>
+                        </div>
+                      </div>
+
                   </div>
 
                   <div class="row">
@@ -144,10 +153,18 @@
                       </div>
                        <div class="form-group mr-4">
                         <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_driver_del'])) { echo ($userdetails[0]['lr_driver_del']==1 ? 'checked' : ''); } ?> name="permissions[lr_driver_del]" class="custom-control-input" id="lr_driver_del">
+                          <label class="custom-control-label" for="lr_driver_del">Delete</label>
+                        </div>
+                      </div>
+
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
                           <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_drivers_add']==1 ? 'checked' : ''); } ?> name="permissions[lr_drivers_add]" class="custom-control-input" id="lr_drivers_add">
                           <label class="custom-control-label" for="lr_drivers_add">Add New</label>
                         </div>
                       </div>
+
                   </div>
 
                   <div class="row">
@@ -175,6 +192,14 @@
                           <label class="custom-control-label" for="lr_trips_add">Add New</label>
                         </div>
                       </div>
+
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_booking_del'])) { echo ($userdetails[0]['lr_booking_del']==1 ? 'checked' : ''); } ?> name="permissions[lr_booking_del]" class="custom-control-input" id="lr_booking_del">
+                          <label class="custom-control-label" for="lr_booking_del">Delete</label>
+                        </div>
+                      </div>
+
                   </div>
 
                   <div class="row">
@@ -185,20 +210,27 @@
                       </div>
                       <div class="form-group mr-4">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_cust_list']==1 ? 'checked' : ''); } ?> name="permissions[lr_cust_list]" class="custom-control-input" id="lr_cust_list">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_cust_list'])) { echo ($userdetails[0]['lr_cust_list']==1 ? 'checked' : ''); } ?> name="permissions[lr_cust_list]" class="custom-control-input" id="lr_cust_list">
                           <label class="custom-control-label" for="lr_cust_list">All List</label>
                         </div>
                       </div>
                       <div class="form-group mr-4">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_cust_edit']==1 ? 'checked' : ''); } ?> name="permissions[lr_cust_edit]" class="custom-control-input" id="lr_cust_edit">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_cust_edit'])) { echo ($userdetails[0]['lr_cust_edit']==1 ? 'checked' : ''); } ?> name="permissions[lr_cust_edit]" class="custom-control-input" id="lr_cust_edit">
                           <label class="custom-control-label" for="lr_cust_edit">Edit</label>
                         </div>
                       </div>
                        <div class="form-group mr-4">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_cust_add']==1 ? 'checked' : ''); } ?> name="permissions[lr_cust_add]" class="custom-control-input" id="lr_cust_add">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_cust_add'])) { echo ($userdetails[0]['lr_cust_add']==1 ? 'checked' : ''); } ?> name="permissions[lr_cust_add]" class="custom-control-input" id="lr_cust_add">
                           <label class="custom-control-label" for="lr_cust_add">Add New</label>
+                        </div>
+                      </div>
+
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_cust_del'])) { echo ($userdetails[0]['lr_cust_del']==1 ? 'checked' : ''); } ?> name="permissions[lr_cust_del]" class="custom-control-input" id="lr_cust_del">
+                          <label class="custom-control-label" for="lr_cust_del">Delete</label>
                         </div>
                       </div>
                   </div>
@@ -227,6 +259,13 @@
                           <label class="custom-control-label" for="lr_fuel_add">Add New</label>
                         </div>
                       </div>
+
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_fuel_del']==1 ? 'checked' : ''); } ?> name="permissions[lr_fuel_del]" class="custom-control-input" id="lr_fuel_del">
+                          <label class="custom-control-label" for="lr_fuel_del">Delete</label>
+                        </div>
+                      </div>
                   </div>
                   <div class="row">
                       <div class="col-sm-6 col-md-2">
@@ -250,6 +289,13 @@
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_reminder_add']==1 ? 'checked' : ''); } ?> name="permissions[lr_reminder_add]" class="custom-control-input" id="lr_reminder_add">
                           <label class="custom-control-label" for="lr_reminder_add">Add New</label>
+                        </div>
+                      </div>
+
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_reminder_del']==1 ? 'checked' : ''); } ?> name="permissions[lr_reminder_del]" class="custom-control-input" id="lr_reminder_del">
+                          <label class="custom-control-label" for="lr_reminder_del">Delete</label>
                         </div>
                       </div>
                   </div>
@@ -277,7 +323,49 @@
                           <label class="custom-control-label" for="lr_ie_add">Add New</label>
                         </div>
                       </div>
+
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_ie_del']==1 ? 'checked' : ''); } ?> name="permissions[lr_ie_del]" class="custom-control-input" id="lr_ie_del">
+                          <label class="custom-control-label" for="lr_ie_del">Delete</label>
+                        </div>
+                      </div>
                   </div>
+
+                  <div class="row">
+                      <div class="col-sm-6 col-md-2">
+                        <div class="form-group">
+                          <label class="form-label">Maintenace</label>
+                        </div>
+                      </div>
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_maintenace']==1 ? 'checked' : ''); } ?> name="permissions[lr_maintenace]" class="custom-control-input" id="lr_maintenace">
+                          <label class="custom-control-label" for="lr_maintenace">Maintenace</label>
+                        </div>
+                      </div>
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_maintenace_add']==1 ? 'checked' : ''); } ?> name="permissions[lr_maintenace_add]" class="custom-control-input" id="lr_maintenace_add">
+                          <label class="custom-control-label" for="lr_maintenace_add">Maintenace Add</label>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-6 col-md-2">
+                        <div class="form-group">
+                          <label class="form-label">Availablity</label>
+                        </div>
+                      </div>
+                      <div class="form-group mr-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" value="1" <?php if(isset($userdetails[0]['lr_vech_list'])) { echo ($userdetails[0]['lr_vech_availablity']==1 ? 'checked' : ''); } ?> name="permissions[lr_vech_availablity]" class="custom-control-input" id="lr_vech_availablity">
+                          <label class="custom-control-label" for="lr_vech_availablity">Availablity</label>
+                        </div>
+                      </div>
+                     
+                  </div>   
+
                   <div class="row">
                       <div class="col-sm-6 col-md-2">
                         <div class="form-group">
