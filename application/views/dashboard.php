@@ -53,7 +53,7 @@
             <div class="info-box mb-3">
                <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-user text-white"></i></span>
                <div class="info-box-content">
-                  <span class="info-box-text">Total de clientes</span>
+                  <span class="info-box-text">Total de Clientes</span>
                   <span class="info-box-number"><?= ($dashboard['tot_customers']!='') ? $dashboard['tot_customers']:'0' ?> </span>
                </div>
                <!-- /.info-box-content -->
@@ -148,7 +148,7 @@
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer clearfix">
-                     <a href="<?= base_url() ?>reminder/addreminder"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Adicionar lembrete</button></a>
+                     <a href="<?= base_url() ?>reminder/addreminder"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Adicionar Lembrete</button></a>
                   </div>
                </div>
             </div>
@@ -157,13 +157,13 @@
          <div class="col-sm-6 col-lg-6 ">
             <div class="card ">
                <div class="card-header">
-                  <h2 class="card-title">Localização atual do veículo</h2>
+                  <h2 class="card-title">Localização Atual do Veículo</h2>
                </div>
                <table  class="datatable table card-table table-vcenter">
                   <thead>
                      <tr>
-                        <th>Name</th>
-                        <th>Current Location</th>
+                        <th>Nome</th>
+                        <th>Localização Atual</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -183,12 +183,12 @@
          <div class="col-sm-6 col-lg-6 ">
             <div class="card">
                <div class="card-header">
-                  <h2 class="card-title">Vechicle Running Status</h2>
+                  <h2 class="card-title">Status de Funcionamento do Veículo</h2>
                </div>
                <table class="datatable table card-table">
                   <thead>
                      <tr>
-                        <th>Name</th>
+                        <th>Nome</th>
                         <th>Status</th>
                      </tr>
                   </thead>
@@ -210,14 +210,14 @@
             <div class="col-sm-12 col-lg-12 ">
                <div class="card">
                   <div class="card-header">
-                     <h2 class="card-title">Vehicle Geofence Status</h2>
+                     <h2 class="card-title">Status da Cerca Geográfica do Veículo</h2>
                   </div>
                   <table class="datatable table card-table table-vcenter">
                      <thead>
                         <tr>
-                           <th>Vehicle</th>
-                           <th>Event</th>
-                           <th>Time</th>
+                           <th>Veículo</th>
+                           <th>Evento</th>
+                           <th>Tempo</th>
                         </tr>
                      </thead>
                      <tbody>

@@ -2,14 +2,14 @@
    <div class="container-fluid">
       <div class="row mb-2">
          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Driver Info
+            <h1 class="m-0 text-dark">Informações do Motorista
             </h1>
          </div>
          <!-- /.col -->
          <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Dashboard</a></li>
-               <li class="breadcrumb-item active">Driver Info</li>
+               <li class="breadcrumb-item active">Informações do Motorista</li>
             </ol>
          </div>
          <!-- /.col -->
@@ -28,9 +28,9 @@
                   <thead>
                      <tr>
                         <th class="w-1">S.No</th>
-                        <th>Photo</th>
-                        <th>Name</th>
-                        <th>Mobile</th>
+                        <th>Foto</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
                         <th>License No</th>
                         <th>License Exp Date</th>
                         <th>Date of Joining</th>

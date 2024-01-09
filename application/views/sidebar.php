@@ -30,7 +30,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('vehicle');?> <?php echo activate_menu('addvehicle');?><?php echo activate_menu('viewvehicle');?><?php echo activate_menu('editvehicle');?><?php echo activate_menu('vehiclegroup');?>">
                   <i class="nav-icon fas fa-truck"></i>
                   <p>
-                     Vehicle's
+                  Veículos
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -39,21 +39,21 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>vehicle" class="nav-link <?php echo activate_menu('vehicle');?><?php echo activate_menu('editvehicle');?><?php echo activate_menu('viewvehicle');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Vehicle List</p>
+                        <p>Lista de Veículos</p>
                      </a>
                   </li>
                  <?php } if(userpermission('lr_vech_add')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>vehicle/addvehicle" class="nav-link <?php echo activate_menu('addvehicle');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Vehicle</p>
+                        <p>Adicionar Veículo</p>
                      </a>
                   </li>
                   <?php } if(userpermission('lr_vech_group')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>vehicle/vehiclegroup" class="nav-link <?php echo activate_menu('vehiclegroup');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Vehicle Group</p>
+                        <p>Grupo de Veículos</p>
                      </a>
                   </li>
                 <?php } ?>
@@ -65,7 +65,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('drivers');?> <?php echo activate_menu('adddrivers');?><?php echo activate_menu('editdriver');?>">
                   <i class="nav-icon fas fa-user-secret"></i>
                   <p>
-                     Driver's
+                     Motoristas
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -74,14 +74,14 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>drivers" class="nav-link <?php echo activate_menu('drivers');?><?php echo activate_menu('editdriver');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Driver List</p>
+                        <p>Lista de Motoristas</p>
                      </a>
                   </li>
                   <?php } if(userpermission('lr_drivers_add')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>drivers/adddrivers" class="nav-link <?php echo activate_menu('adddrivers');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Driver</p>
+                        <p>Add Motorista</p>
                      </a>
                   </li>
                   <?php } ?>
@@ -94,7 +94,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('trips');?> <?php echo activate_menu('addtrips');?> <?php echo activate_menu('edittrip');?><?php echo activate_menu('details');?>">
                   <i class="nav-icon fas fa-road"></i>
                   <p>
-                     Bookings
+                     Reservas
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -103,14 +103,14 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>trips" class="nav-link <?php echo activate_menu('trips');?><?php echo activate_menu('edittrip');?><?php echo activate_menu('details');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Booking List</p>
+                        <p>Lista de Reservas</p>
                      </a>
                   </li>
                   <?php } if(userpermission('lr_trips_add')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>trips/addtrips" class="nav-link <?php echo activate_menu('addtrips');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Booking</p>
+                        <p>Adicionar Reserva</p>
                      </a>
                   </li>
                   <?php } ?>
@@ -123,7 +123,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('customer');?> <?php echo activate_menu('addcustomer');?><?php echo activate_menu('editcustomer');?>">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
-                     Customer
+                     Clientes
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -132,14 +132,14 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>customer" class="nav-link <?php echo activate_menu('customer');?><?php echo activate_menu('editcustomer');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Customer Management</p>
+                        <p>Gestão de Clientes</p>
                      </a>
                   </li>
                   <?php } if(userpermission('lr_cust_add')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>customer/addcustomer" class="nav-link <?php echo activate_menu('addcustomer');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Customer</p>
+                        <p>Add Cliente</p>
                      </a>
                   </li>
                    <?php } ?>
@@ -152,7 +152,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('maintenance');?> <?php echo activate_menu('addmaintenance');?><?php echo activate_menu('editfuel');?>">
                   <i class="nav-icon fa fa-wrench"></i>
                   <p>
-                  Maintenance
+                  Manutenção
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -160,14 +160,14 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>maintenance" class="nav-link <?php echo activate_menu('maintenance');?> <?php echo activate_menu('editfuel');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Maintenance</p>
+                        <p>Manutenção</p>
                      </a>
                   </li>
                   <?php  if(userpermission('lr_maintenace_add')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>maintenance/addmaintenance" class="nav-link <?php echo activate_menu('addmaintenance');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Maintenance</p>
+                        <p>Add Manutenção</p>
                      </a>
                   </li>
                   <?php  } ?>
@@ -181,7 +181,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('partsinventory');?><?php echo activate_menu('addpartsinventory');?> ">
                   <i class="nav-icon fa fa-microchip"></i>
                   <p>
-                  Parts Inventory
+                  Inventário de Peças
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -189,13 +189,13 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>partsinventory" class="nav-link <?php echo activate_menu('partsinventory');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Parts Inventory</p>
+                        <p>Inventário de Peças</p>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>partsinventory/addpartsinventory" class="nav-link <?php echo activate_menu('addpartsinventory');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Parts Inventory</p>
+                        <p>Add Inventário de Peças</p>
                      </a>
                   </li>
                </ul>
@@ -208,7 +208,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('fuel');?> <?php echo activate_menu('addfuel');?><?php echo activate_menu('editfuel');?>">
                   <i class="nav-icon fa fa-battery-three-quarters"></i>
                   <p>
-                     Fuel
+                  Combustível
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -217,14 +217,14 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>fuel" class="nav-link <?php echo activate_menu('fuel');?> <?php echo activate_menu('editfuel');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Fuel Management</p>
+                        <p>Gestão de Combustível</p>
                      </a>
                   </li>
                    <?php } if(userpermission('lr_fuel_add')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>fuel/addfuel" class="nav-link <?php echo activate_menu('addfuel');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Fuel</p>
+                        <p>Add Combustível</p>
                      </a>
                   </li>
                    <?php } ?>
@@ -236,7 +236,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('reminder');?> <?php echo activate_menu('addreminder');?><?php echo activate_menu('editreminder');?>">
                   <i class="nav-icon fas fa fa-bullhorn"></i>
                   <p>
-                     Reminder
+                     Lembrete
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -245,14 +245,14 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>reminder" class="nav-link <?php echo activate_menu('reminder');?><?php echo activate_menu('editreminder');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Reminder Management</p>
+                        <p>Gerenciamento de Lembretes</p>
                      </a>
                   </li>
                   <?php } if(userpermission('lr_reminder_add')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>reminder/addreminder" class="nav-link <?php echo activate_menu('addreminder');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Reminder</p>
+                        <p>Add Lembrete</p>
                      </a>
                   </li>
                   <?php } ?>
@@ -264,7 +264,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('incomexpense');?> <?php echo activate_menu('editincomexpense');?> <?php echo activate_menu('addincomexpense');?>">
                   <i class="nav-icon fa fa-dollar-sign"></i>
                   <p>
-                     Income & Expenses
+                  Receitas e Despesas
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -273,14 +273,14 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>incomexpense" class="nav-link <?php echo activate_menu('incomexpense');?> <?php echo activate_menu('editincomexpense');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Income & Expenses</p>
+                        <p>Receitas e Despesas</p>
                      </a>
                   </li>
                    <?php } if(userpermission('lr_ie_add')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>incomexpense/addincomexpense" class="nav-link <?php echo activate_menu('addincomexpense');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add Income & Expenses</p>
+                        <p>Add Receitas e Despesas</p>
                      </a>
                   </li>
                   <?php } ?>
@@ -292,7 +292,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('tracking');?> <?php echo activate_menu('livestatus');?>">
                   <i class="nav-icon fa fa-map-pin"></i>
                   <p>
-                     Tracking
+                  Monitorando
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -301,14 +301,14 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>tracking" class="nav-link <?php echo activate_menu('tracking');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>History Tracking</p>
+                        <p>Histórico de Rastreamento</p>
                      </a>
                   </li>
                   <?php } if(userpermission('lr_liveloc')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>tracking/livestatus" class="nav-link <?php echo activate_menu('livestatus');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Live Location</p>
+                        <p>Localização Ao Vivo</p>
                      </a>
                   </li>
                   <?php } ?>
@@ -320,7 +320,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('geofence');?> <?php echo activate_menu('addgeofence');?> <?php echo activate_menu('geofenceevents');?>">
                   <i class="nav-icon fa fa-street-view"></i>
                   <p>
-                     Geofence
+                  Cerca Geográfica
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -329,21 +329,21 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>geofence/addgeofence" class="nav-link <?php echo activate_menu('addgeofence');?>">
                         <i class="nav-icon fas faa-list"></i>
-                        <p>Add Geofence</p>
+                        <p>Add Cerca</p>
                      </a>
                   </li>
                   <?php } if(userpermission('lr_geofence_list')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>geofence" class="nav-link <?php echo activate_menu('geofence');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Geofence Management</p>
+                        <p>Gerenciamento de Cerca </p>
                      </a>
                   </li>
                   <?php } if(userpermission('lr_geofence_events')) { ?>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>geofence/geofenceevents" class="nav-link <?php echo activate_menu('geofenceevents');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Geofence Events</p>
+                        <p>Eventos de Cerca</p>
                      </a>
                   </li>
                   <?php } ?>
@@ -354,7 +354,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('booking');?><?php echo activate_menu('fuels');?><?php echo activate_menu('driversreport');?><?php echo activate_menu('incomeexpense');?>">
                   <i class="nav-icon fa fa-calculator" aria-hidden="true"></i>
                   <p>
-                     Reports
+                  Relatórios
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -362,25 +362,25 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>reports/booking" class="nav-link <?php echo activate_menu('booking');?>">
                         <i class="fas fa-cosg icon nav-icon"></i>
-                        <p>Bookings</p>
+                        <p>Reservas</p>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>reports/incomeexpense" class="nav-link <?php echo activate_menu('incomeexpense');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Income & Expenses</p>
+                        <p>Receitas e Despesas</p>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>reports/fuels" class="nav-link <?php echo activate_menu('fuels');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Fuel</p>
+                        <p>Combustível</p>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>reports/driversreport" class="nav-link <?php echo activate_menu('driversreport');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Driver</p>
+                        <p>Motorista</p>
                      </a>
                   </li>
                </ul>
@@ -390,7 +390,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('websitesetting');?><?php echo activate_menu('email_template');?><?php echo activate_menu('websitesetting_traccar');?> <?php echo activate_menu('smtpconfig');?><?php echo activate_menu('edit_email_template');?>">
                   <i class="nav-icon fa fa-dollar-sign"></i>
                   <p>
-                     Setting's
+                  Configurações
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -398,13 +398,13 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>settings/websitesetting" class="nav-link <?php echo activate_menu('websitesetting');?>">
                         <i class="fas fa-cosg icon nav-icon"></i>
-                        <p>General Settings</p>
+                        <p>Configurações Gerais</p>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>settings/smtpconfig" class="nav-link <?php echo activate_menu('smtpconfig');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>SMTP Configuration</p>
+                        <p>SMTP Configuração</p>
                      </a>
                   </li>
                   <li class="nav-item">
@@ -416,7 +416,7 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>settings/websitesetting_traccar" class="nav-link <?php echo activate_menu('websitesetting_traccar');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Traccar Config</p>
+                        <p>Configuração do Traccar</p>
                      </a>
                   </li>
                </ul>
@@ -425,7 +425,7 @@
                <a href="#" class="nav-link <?php echo activate_menu('users');?> <?php echo activate_menu('edituser');?><?php echo activate_menu('adduser');?>">
                   <i class="nav-icon fa fa-user"></i>
                   <p>
-                     User's
+                  Usuários
                      <i class="right fas fa-angle-left"></i>
                   </p>
                </a>
@@ -433,13 +433,13 @@
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>users" class="nav-link <?php echo activate_menu('users');?> <?php echo activate_menu('edituser');?>">
                         <i class="fas fa-cosg icon nav-icon"></i>
-                        <p>User Management</p>
+                        <p>Gerenciamento de Usuários</p>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a href="<?= base_url(); ?>users/adduser" class="nav-link <?php echo activate_menu('adduser');?>">
                         <i class="nav-icon fas faa-plus"></i>
-                        <p>Add User</p>
+                        <p>Add Usuário</p>
                      </a>
                   </li>
                </ul>
@@ -449,7 +449,7 @@
                <a href="<?= base_url(); ?>resetpassword" class="nav-link <?php echo activate_menu('resetpassword');?>">
                   <i class="nav-icon fa fa-key"></i>
                   <p>
-                     Change Password
+                  Alterar a Senha
                   </p>
                </a>
             </li>
