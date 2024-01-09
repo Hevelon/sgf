@@ -27,7 +27,7 @@
             <div class="info-box">
                <span class="info-box-icon theme-bg-default elevation-1"><i class="fas fa-truck text-white"></i></span>
                <div class="info-box-content">
-                  <span class="info-box-text">Total Vehicle's</span>
+                  <span class="info-box-text">Total de Veículos</span>
                   <span class="info-box-number"><?= ($dashboard['tot_vehicles']!='') ? $dashboard['tot_vehicles']:'0' ?>  </span>
                </div>
                <!-- /.info-box-content -->
@@ -39,7 +39,7 @@
             <div class="info-box mb-3">
                <span class="info-box-icon bg-success elevation-1"><i class="fa fa-user-secret"></i></span>
                <div class="info-box-content">
-                  <span class="info-box-text">Total Drivers</span>
+                  <span class="info-box-text">Total de Motoristas</span>
                   <span class="info-box-number"><?= ($dashboard['tot_drivers']!='') ? $dashboard['tot_drivers']:'0' ?> </span>
                </div>
                <!-- /.info-box-content -->
@@ -53,7 +53,7 @@
             <div class="info-box mb-3">
                <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-user text-white"></i></span>
                <div class="info-box-content">
-                  <span class="info-box-text">Total Customer</span>
+                  <span class="info-box-text">Total de clientes</span>
                   <span class="info-box-number"><?= ($dashboard['tot_customers']!='') ? $dashboard['tot_customers']:'0' ?> </span>
                </div>
                <!-- /.info-box-content -->
@@ -65,7 +65,7 @@
             <div class="info-box mb-3">
                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-id-card"></i></span>
                <div class="info-box-content">
-                  <span class="info-box-text">Today Trips</span>
+                  <span class="info-box-text">Viagens de Hoje</span>
                   <span class="info-box-number"><?= ($dashboard['tot_today_trips']!='') ? $dashboard['tot_today_trips']:'0' ?></span>
                </div>
                <!-- /.info-box-content -->
@@ -84,7 +84,7 @@
                <!-- TABLE: LATEST ORDERS -->
                <div class="card">
                   <div class="card-header">
-                     <h2 class="card-title">Income and Expenses</h2>
+                     <h2 class="card-title">Receitas e Despesas</h2>
                   </div>
                   <div class="card-header border-transparent">
                      <div class="card-body">
@@ -110,10 +110,10 @@
                         </div>
                         <div class="d-flex flex-row justify-content-end">
                            <span class="mr-2">
-                           <i class="fas fa-square text-success"></i> Income
+                           <i class="fas fa-square text-success"></i> Receitas
                            </span>
                            <span>
-                           <i class="fas fa-square text-danger"></i> Expenses
+                           <i class="fas fa-square text-danger"></i> Despesas
                            </span>
                         </div>
                      </div>
@@ -126,7 +126,7 @@
                   <div class="card-header ui-sortable-handle" style="cursor: move;">
                      <h3 class="card-title">
                         <i class="ion ion-clipboard mr-1"></i>
-                        Reminder
+                        Lembrete
                      </h3>
                      <div class="card-tools">
                      </div>
@@ -139,7 +139,7 @@
                            <span class="text">
                               <?= $reminder['r_message']. ' ';  ?>    
                               <div class="tools"> 
-                                 <button type="button" data-id="<?= $reminder['r_id'] ?>" class="todayreminderread btn btn-block btn-outline-primary btn-xs">Mark as Read</button>                 
+                                 <button type="button" data-id="<?= $reminder['r_id'] ?>" class="todayreminderread btn btn-block btn-outline-primary btn-xs">Marcar como Lido</button>                 
                               </div>
                            </span>
                         </li>
@@ -148,7 +148,7 @@
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer clearfix">
-                     <a href="<?= base_url() ?>reminder/addreminder"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add Reminder</button></a>
+                     <a href="<?= base_url() ?>reminder/addreminder"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Adicionar lembrete</button></a>
                   </div>
                </div>
             </div>
@@ -157,7 +157,7 @@
          <div class="col-sm-6 col-lg-6 ">
             <div class="card ">
                <div class="card-header">
-                  <h2 class="card-title">Vechicle Current Location</h2>
+                  <h2 class="card-title">Localização atual do veículo</h2>
                </div>
                <table  class="datatable table card-table table-vcenter">
                   <thead>

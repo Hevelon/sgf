@@ -7,7 +7,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Customer</a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Clientes</a></li>
               <li class="breadcrumb-item active"><?php echo (isset($customerdetails))?'Edit Customer':'Add Customer' ?></li>
             </ol>
           </div><!-- /.col -->
@@ -26,31 +26,31 @@
                  <?php } ?>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
-                          <label class="form-label">Name<span class="form-required">*</span></label>
-                          <input type="text" required="true" class="form-control" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_name']:'' ?>" id="c_name" name="c_name" placeholder="Customer Name">
+                          <label class="form-label">Nome<span class="form-required">*</span></label>
+                          <input type="text" required="true" class="form-control" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_name']:'' ?>" id="c_name" name="c_name" placeholder="Nome do cliente">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
-                         <label class="form-label">Mobile<span class="form-required">*</span></label>
-                          <input type="text" required="true" class="form-control" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_mobile']:'' ?>" id="c_mobile" name="c_mobile" placeholder="Customer Mobile">
+                         <label class="form-label">Telefone<span class="form-required">*</span></label>
+                          <input type="text" required="true" class="form-control" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_mobile']:'' ?>" id="c_mobile" name="c_mobile" placeholder="Telefone do cliente">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
                          <label class="form-label">Email</label>
-                          <input type="text" required="true" class="form-control" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_email']:'' ?>" id="c_email" name="c_email" placeholder="Customer Email">
+                          <input type="text" required="true" class="form-control" value="<?php echo (isset($customerdetails)) ? $customerdetails[0]['c_email']:'' ?>" id="c_email" name="c_email" placeholder="Email do cliente">
 
                       </div>
                     </div>
                      <?php if(isset($customerdetails[0]['c_isactive'])) { ?>
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
-                          <label for="c_isactive" class="form-label">Customer Status</label>
+                          <label for="c_isactive" class="form-label">Status do Cliente</label>
                         <select id="c_isactive" name="c_isactive" class="form-control " required="">
-                          <option value="">Select Driver Status</option> 
-                          <option <?php echo (isset($customerdetails) && $customerdetails[0]['c_isactive']==1) ? 'selected':'' ?> value="1">Active</option> 
-                          <option <?php echo (isset($customerdetails) && $customerdetails[0]['c_isactive']==0) ? 'selected':'' ?> value="0">Inactive</option> 
+                          <option value="">Selecione o status do motorista</option> 
+                          <option <?php echo (isset($customerdetails) && $customerdetails[0]['c_isactive']==1) ? 'selected':'' ?> value="1">Ativo</option> 
+                          <option <?php echo (isset($customerdetails) && $customerdetails[0]['c_isactive']==0) ? 'selected':'' ?> value="0">Inativo</option> 
                         </select>
                       </div>
                       </div>
@@ -59,8 +59,8 @@
 
                     <div class="col-sm-6 col-md-4">
                       <div class="form-group">
-                       <label class="form-label">Address<span class="form-required">*</span></label>
-                        <textarea class="form-control" required="true" id="c_address" autocomplete="off" placeholder="Address"  name="c_address"><?php echo (isset($customerdetails)) ? $customerdetails[0]['c_address']:'' ?></textarea>
+                       <label class="form-label">Endereço<span class="form-required">*</span></label>
+                        <textarea class="form-control" required="true" id="c_address" autocomplete="off" placeholder="Endereço"  name="c_address"><?php echo (isset($customerdetails)) ? $customerdetails[0]['c_address']:'' ?></textarea>
                       </div>
                     </div>
                    
