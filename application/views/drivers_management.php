@@ -31,13 +31,13 @@
                         <th>Foto</th>
                         <th>Nome</th>
                         <th>Telefone</th>
-                        <th>License No</th>
-                        <th>License Exp Date</th>
-                        <th>Date of Joining</th>
+                        <th>Número da Licença</th>
+                        <th>Data de validade da licença</th>
+                        <th>Data de Adesão</th>
                         <th>Doc</th>
-                        <th>Is Active</th>
+                        <th>Está Ativo</th>
                         <?php if(userpermission('lr_drivers_list_edit') || userpermission('lr_driver_del')) { ?>
-                        <th>Action</th>
+                        <th>Ação</th>
                         <?php } ?>
                      </tr>
                   </thead>

@@ -69,24 +69,24 @@
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                        <label class="form-label">Reference/Notes</label>
+                        <label class="form-label">Referência/Notas</label>
                         <input type="text" name="d_ref" value="<?php echo (isset($driverdetails)) ? $driverdetails[0]['d_ref']:'' ?>" class="form-control" placeholder="Reference or Notes" >
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <div class="form-group">
-                        <label class="form-label">Address<span class="form-required">*</span></label>
+                        <label class="form-label">Endereço<span class="form-required">*</span></label>
                         <textarea class="form-control" autocomplete="off" placeholder="Address"  name="d_address"><?php echo (isset($driverdetails)) ? $driverdetails[0]['d_address']:'' ?></textarea>
                         
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                       <div class="form-group">
-                        <label for="d_is_active" class="form-label">Driver Status</label>
+                        <label for="d_is_active" class="form-label">Status do Motorista</label>
                         <select id="d_is_active" name="d_is_active" class="form-control " required="">
-                          <option value="">Select Driver Status</option> 
-                          <option <?php echo (isset($driverdetails) && $driverdetails[0]['d_is_active']==1) ? 'selected':'' ?> value="1">Active</option> 
-                          <option <?php echo (isset($driverdetails) && $driverdetails[0]['d_is_active']==0) ? 'selected':'' ?> value="0">Inactive</option> 
+                          <option value="">Selecione</option> 
+                          <option <?php echo (isset($driverdetails) && $driverdetails[0]['d_is_active']==1) ? 'selected':'' ?> value="1">Ativo</option> 
+                          <option <?php echo (isset($driverdetails) && $driverdetails[0]['d_is_active']==0) ? 'selected':'' ?> value="0">Inativo</option> 
                         </select>
                       </div>
                     </div>

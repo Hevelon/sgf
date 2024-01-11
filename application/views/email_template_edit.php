@@ -2,13 +2,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Email Template
+            <h1 class="m-0 text-dark">Modelo de E-mail
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Home</a></li>
-              <li class="breadcrumb-item active">Email Template</li>
+              <li class="breadcrumb-item active">Modelo de E-mail</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -24,17 +24,17 @@
       <form id="addnewcategory" class="basicvalidation" role="form" action="<?php echo base_url(); ?>settings/update_template" method="post"  enctype='multipart/form-data'>
         <div class="card-body">
           <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" readonly required="true" value="<?php echo output(isset($emailtemplate[0]['et_name'])?$emailtemplate[0]['et_name']:''); ?>" id="et_name" name="et_name" placeholder="Enter Name">
+            <label>Nome</label>
+            <input type="text" class="form-control" readonly required="true" value="<?php echo output(isset($emailtemplate[0]['et_name'])?$emailtemplate[0]['et_name']:''); ?>" id="et_name" name="et_name" placeholder="Insira o nome">
           </div>
           <div class="form-group">
-            <label>Content</label>
-            <textarea class="form-control" rows="10" id="et_body" name="et_body" placeholder="Email content"><?php echo output(isset($emailtemplate[0]['et_body'])?$emailtemplate[0]['et_body']:''); ?></textarea>
+            <label>Conteúdo</label>
+            <textarea class="form-control" rows="10" id="et_body" name="et_body" placeholder="Conteúdo de e-mail"><?php echo output(isset($emailtemplate[0]['et_body'])?$emailtemplate[0]['et_body']:''); ?></textarea>
           </div>
           <input type="hidden" required="true" class="form-control" value="<?php echo output(isset($emailtemplate[0]['et_id'])?$emailtemplate[0]['et_id']:''); ?>" id="et_id" name="et_id" >
-            <small>Note : Please user "p" tag for each new line..</small>
+            <small>Nota: Por favor, use a tag "p" para cada nova linha.</small>
             <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Atualizar</button>
           </div>
         </div>
       </form>

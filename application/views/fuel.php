@@ -2,13 +2,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Fuel Info
+            <h1 class="m-0 text-dark">Informações Sobre Combustível
             </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Dashboard</a></li>
-              <li class="breadcrumb-item active">Fuel Info</li>
+              <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Painel</a></li>
+              <li class="breadcrumb-item active">Informações Sobre Combustível</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -24,15 +24,15 @@
                       <thead>
                         <tr>
                           <th class="w-1">S.No</th>
-                           <th>Fuel Fill Date</th>
-                          <th>Vechicle</th>
-                          <th>Quantity</th>
-                          <th>Fuel Total Price</th>
-                          <th>Fuel Filled By</th>
-                           <th>Odometer Reading</th>
-                          <th>Comments</th>
+                           <th>Data de Abastecimento</th>
+                          <th>Veículo</th>
+                          <th>Quantidade</th>
+                          <th>Preço Total</th>
+                          <th>Abastecido Por</th>
+                           <th>Leitura de Odômetro</th>
+                          <th>Comentários</th>
                           <?php if(userpermission('lr_fuel_edit') || userpermission('lr_fuel_del')) { ?>
-                          <th>Action</th>
+                          <th>Ação</th>
                           <?php } ?>
                         </tr>
                       </thead>
