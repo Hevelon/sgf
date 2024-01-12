@@ -7,7 +7,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Vehicle</a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard">Veículo</a></li>
               <li class="breadcrumb-item active"><?php echo (isset($vehicledetails))?'Edit vehicle':'Add Vehicle' ?></li>
             </ol>
           </div><!-- /.col -->
@@ -26,9 +26,9 @@
                    <input type="hidden" name="v_id" id="v_id" value="<?php echo (isset($vehicledetails)) ? $vehicledetails[0]['v_id']:'' ?>" >
                     <?php } ?>
                     <div class="col-sm-6 col-md-3">
-                        <label class="form-label">Registration Number</label>
+                        <label class="form-label">Número de Registro</label>
                       <div class="form-group">
-                        <input type="text" name="v_registration_no" id="v_registration_no" class="form-control" placeholder="Registration Number" value="<?php echo (isset($vehicledetails)) ? $vehicledetails[0]['v_registration_no']:'' ?>">
+                        <input type="text" name="v_registration_no" id="v_registration_no" class="form-control" placeholder="Número de Registro" value="<?php echo (isset($vehicledetails)) ? $vehicledetails[0]['v_registration_no']:'' ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
