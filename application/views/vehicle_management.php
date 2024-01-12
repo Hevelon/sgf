@@ -23,14 +23,14 @@
                   <thead>
                      <tr>
                         <th class="w-1">S.No</th>
-                        <th>Vehicle Name</th>
-                        <th>Registration Number</th>
-                        <th>Model</th>
-                        <th>Chassis No</th>
-                        <th>Group</th>
-                        <th>Is Active</th>
+                        <th>Nome do Veículo</th>
+                        <th>Número do Registro</th>
+                        <th>Modelo</th>
+                        <th>Número do Chassis</th>
+                        <th>Grupo</th>
+                        <th>Ativo</th>
                         <?php if(userpermission('lr_vech_list_view') || userpermission('lr_vech_list_edit') || userpermission('lr_vech_del')) { ?>
-                        <th>Action</th>
+                        <th>Ação</th>
                         <?php } ?>
                      </tr>
                   </thead>
